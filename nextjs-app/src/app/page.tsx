@@ -350,7 +350,7 @@ export default function Home() {
             </h3>
             <ul className="space-y-3 text-slate-600 text-sm leading-relaxed">
               <li><strong className="text-slate-800">Leadership:</strong> When I lead, the market follows. Event organization with people management skills and an artistic touch</li>
-              <li><strong className="text-slate-800">Innovation:</strong> First principles thinking. Building what others theorize</li>
+              <li><strong className="text-slate-800">Innovation:</strong> First principles thinking</li>
               <li><strong className="text-slate-800">Execution:</strong> Zero to scale, paying users from day one, weekly releases, third place at Brian AI Hackathon, consistently delivered</li>
             </ul>
           </div>
