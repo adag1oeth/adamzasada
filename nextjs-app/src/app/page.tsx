@@ -1,306 +1,434 @@
 'use client';
 
+import { Suspense, memo } from 'react';
 import Image from 'next/image';
 import { trackContactClick } from '@/lib/analytics';
 
-export default function Home() {
+// Memoized components for better performance
+const ProfileImage = memo(function ProfileImage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-300/20 to-indigo-400/20 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-indigo-300/20 to-blue-400/20 rounded-full blur-3xl"></div>
-      </div>
-
-      {/* Main Content */}
-      <div className="relative z-10">
-        {/* Header Section */}
-        <header className="max-w-6xl mx-auto px-6 pt-16 pb-8">
-          <div className="text-center space-y-6">
-            <div className="w-32 h-32 mx-auto relative">
-              <Image 
-                src="/adag1o.jpg" 
-                alt="Adam Zasada" 
-                width={128}
-                height={128}
-                className="w-full h-full rounded-2xl object-cover shadow-2xl border-4 border-white/50"
-                priority
-              />
-            </div>
-            <div>
-              <h1 className="text-5xl md:text-6xl font-bold text-slate-800 mb-4">
-                Adam Zasada
-              </h1>
-              <p className="text-xl md:text-2xl text-slate-600 font-medium">
-                Go-To-Market Advisor & Founder
-              </p>
-              <p className="text-lg text-slate-500 mt-2">
-                Product & GTM Strategist | Web3, Infra, AI
-              </p>
-            </div>
-          </div>
-        </header>
-
-        {/* About Section */}
-        <section className="max-w-5xl mx-auto px-6 py-16">
-          <div className="bg-white/90 backdrop-blur-md rounded-3xl p-8 md:p-12 shadow-2xl border border-slate-200/50 relative overflow-hidden">
-            {/* Subtle pattern overlay */}
-            <div className="absolute inset-0 opacity-5">
-              <div className="absolute inset-0" style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Ccircle cx='7' cy='7' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-              }}></div>
-            </div>
-            
-            <div className="relative z-10">
-              <h2 className="text-3xl font-bold text-slate-800 mb-8 text-center">About Me</h2>
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-                <div className="lg:col-span-2 space-y-6 text-slate-700 text-lg leading-relaxed">
-                  <p className="text-xl font-medium text-slate-800">
-                    I&apos;m a builder and strategist with 8+ years leading product and GTM for frontier tech spanning Web3, AI, and digital identity.
-                  </p>
-                  <p>
-                    I&apos;ve co-founded and scaled products from zero to adoption, led ecosystem launches across Layer 2s and wallets, and built automation layers for growth.
-                  </p>
-                  <div className="flex flex-wrap gap-2 pt-4">
-                    {["Web3", "AI", "Product Strategy", "GTM", "Digital Identity", "Automation"].map((tag) => (
-                      <span 
-                        key={tag}
-                        className="px-3 py-1 bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 rounded-full text-sm font-medium border border-blue-200/50"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                
-                <div className="space-y-4">
-                  <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border border-blue-200/30">
-                    <div className="text-3xl font-bold text-blue-600">8+</div>
-                    <div className="text-sm text-slate-600">Years Experience</div>
-                  </div>
-                  <div className="text-center p-6 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl border border-indigo-200/30">
-                    <div className="text-3xl font-bold text-indigo-600">$200K</div>
-                    <div className="text-sm text-slate-600">Funding Raised</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Experience Highlights */}
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 border border-orange-200/50">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-2xl">🚀</span>
-                  <h3 className="font-semibold text-blue-800">Founder, 0xKYC</h3>
-                </div>
-                <p className="text-sm text-blue-700">
-                  Raised <strong>$200k</strong> (Outlier Ventures, BuffiCorn Ventures, Celestia CTO and angels)
-                </p>
-              </div>
-              
-              <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl p-4 border border-violet-200/50">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-2xl">🌱</span>
-                  <h3 className="font-semibold text-indigo-800">Growth Leader</h3>
-                </div>
-                <p className="text-sm text-indigo-700">
-                  Scaled <strong>Elympics</strong> community from 300 to 10k
-                </p>
-              </div>
-              
-              <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-4 border border-fuchsia-200/50">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-2xl">🕵️‍♂️</span>
-                  <h3 className="font-semibold text-purple-800">Ecosystem Lead, Hinkal</h3>
-                </div>
-                <p className="text-sm text-purple-700">
-                  Privacy protocol strategy and partnerships
-                </p>
-              </div>
-              
-              <div className="bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl p-4 border border-amber-200/50">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-2xl">🐶</span>
-                  <h3 className="font-semibold text-slate-800">Product Lead, BabyDoge</h3>
-                </div>
-                <p className="text-sm text-slate-700">
-                  Shipped: Puppy.fun, Gas Pump, MakeNow.meme
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Services Grid */}
-        <section className="max-w-6xl mx-auto px-6 py-12">
-          <h2 className="text-3xl font-bold text-center text-slate-800 mb-12">How I Create Value</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-blue-200/50">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white text-2xl shadow-lg">
-                  📈
-                </div>
-                <h3 className="text-xl font-bold text-slate-800">GTM Strategy</h3>
-              </div>
-              <ul className="space-y-3 text-slate-700">
-                <li><strong className="text-blue-600">Zero to Launch GTM:</strong> Positioning, narrative, KPI architecture, launch calendar</li>
-                <li><strong className="text-blue-600">KOL and Partnership Engine:</strong> Curated outreach to signed integrations and KOL pushes</li>
-              </ul>
-            </div>
-
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-indigo-200/50">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-white text-2xl shadow-lg">
-                  🎯
-                </div>
-                <h3 className="text-xl font-bold text-slate-800">Product Growth</h3>
-              </div>
-              <ul className="space-y-3 text-slate-700">
-                <li><strong className="text-indigo-600">Product-Market-Fit Acceleration:</strong> User-signal workshops, rapid roadmap cuts, live experiments</li>
-                <li><strong className="text-indigo-600">Token and Community Strategy:</strong> Pre-TGE story, liquidity plan, post-launch retention</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        {/* Process & Values */}
-        <section className="max-w-4xl mx-auto px-6 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Ideal Partners */}
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-orange-100/50 dark:border-orange-500/20">
-              <h3 className="text-xl font-bold text-blue-800 mb-4 flex items-center gap-2">
-                <span className="text-2xl">🤝</span>
-                Ideal Partners
-              </h3>
-              <ol className="space-y-2 text-slate-700 text-sm">
-                <li>1. Seed to Series A crypto teams with a live product or TGE within 6 to 12 months</li>
-                <li>2. A long-term value mindset (no quick pumps)</li>
-                <li>3. Optional AI edge or stablecoin component</li>
-              </ol>
-            </div>
-
-            {/* Process */}
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-violet-100/50 border-violet-200/30">
-              <h3 className="text-xl font-bold text-indigo-800 mb-4 flex items-center gap-2">
-                <span className="text-2xl">⚡</span>
-                Process
-              </h3>
-              <ol className="space-y-2 text-slate-700 text-sm">
-                <li>1. <strong>Discovery Talk</strong> Telegram / X DM</li>
-                <li>2. <strong>Discovery Call</strong> 30 min to align scope and goals</li>
-                <li>3. <strong>Execute and Iterate</strong> async delivery, unblock fast</li>
-              </ol>
-            </div>
-
-            {/* Values */}
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-fuchsia-100/50 border-fuchsia-200/30">
-              <h3 className="text-xl font-bold text-purple-800 mb-4 flex items-center gap-2">
-                <span className="text-2xl">✨</span>
-                Non-Negotiables
-              </h3>
-              <ul className="space-y-2 text-slate-700 text-sm">
-                <li>• Transparent communication and clear decision-makers</li>
-                <li>• User-centric, ethical roadmap</li>
-                <li>• I only take projects I believe in</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        {/* Contact Section */}
-        <section className="max-w-5xl mx-auto px-6 py-16">
-          <div className="relative">
-            {/* Background gradient with animation */}
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-700 via-blue-700 to-indigo-700 rounded-3xl blur-xl opacity-75"></div>
-            <div className="relative bg-gradient-to-r from-slate-700 via-blue-700 to-indigo-700 rounded-3xl p-8 md:p-12 text-center text-white shadow-2xl border border-slate-200/20">
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-slate-700/90 via-blue-700/90 to-indigo-700/90 backdrop-blur-sm"></div>
-              
-              <div className="relative z-10">
-                <h2 className="text-4xl font-bold mb-6">Let&apos;s Build Something Great</h2>
-                <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto leading-relaxed">
-                  Drop a DM with one line on what you&apos;re building and why now.<br/>
-                  <span className="font-semibold">If it clicks, we&apos;ll book the call.</span>
-                </p>
-                
-                <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                  <a 
-                    href="https://t.me/adag1oeth" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-3 bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200 hover:scale-105"
-                    onClick={() => trackContactClick({ contact_method: 'telegram', contact_location: 'cta_section' })}
-                  >
-                    <svg className="w-6 h-6 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M9.036 15.956l-.396 3.72c.567 0 .813-.243 1.11-.535l2.664-2.52 5.52 4.032c1.012.558 1.74.264 1.992-.936l3.612-16.92c.33-1.53-.558-2.13-1.548-1.77L2.1 9.18c-1.488.594-1.47 1.44-.27 1.824l4.62 1.44 10.74-6.78c.504-.324.966-.144.588.18" />
-                    </svg>
-                    Telegram
-                  </a>
-                  
-                  <a 
-                    href="https://x.com/adag1oeth" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-3 bg-black text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200 hover:scale-105"
-                    onClick={() => trackContactClick({ contact_method: 'twitter', contact_location: 'cta_section' })}
-                  >
-                    <svg className="w-6 h-6 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M22.46 5.924c-.793.352-1.644.59-2.538.698a4.48 4.48 0 001.963-2.475 8.94 8.94 0 01-2.828 1.082A4.48 4.48 0 0015.5 4c-2.48 0-4.5 2.02-4.5 4.5 0 .352.04.696.116 1.024C7.728 9.36 4.1 7.6 1.67 4.98c-.386.664-.608 1.436-.608 2.26 0 1.56.794 2.94 2.004 3.748-.736-.024-1.428-.226-2.034-.564v.056c0 2.18 1.552 4 3.612 4.416-.378.104-.776.16-1.188.16-.29 0-.57-.028-.844-.08.57 1.78 2.22 3.08 4.18 3.12A8.98 8.98 0 012 19.54c-.64 0-1.26-.038-1.872-.11A12.7 12.7 0 006.29 21.5c7.548 0 11.68-6.254 11.68-11.68 0-.18-.004-.36-.012-.54A8.18 8.18 0 0024 4.59a8.92 8.92 0 01-2.54.694z" />
-                    </svg>
-                    X (Twitter)
-                  </a>
-                </div>
-
-                <div className="flex gap-6 justify-center">
-                  <a 
-                    href="https://github.com/adag1oeth" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-white/80 hover:text-white transition-all duration-200 hover:scale-110"
-                    aria-label="GitHub"
-                    onClick={() => trackContactClick({ contact_method: 'github', contact_location: 'footer_social' })}
-                  >
-                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.867 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.461-1.11-1.461-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.091-.646.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.699 1.028 1.592 1.028 2.683 0 3.841-2.338 4.687-4.566 4.936.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.749 0 .268.18.579.688.481C19.135 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
-                    </svg>
-                  </a>
-                  
-                  <a 
-                    href="https://linkedin.com/in/adag1oeth" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-white/80 hover:text-white transition-all duration-200 hover:scale-110"
-                    aria-label="LinkedIn"
-                    onClick={() => trackContactClick({ contact_method: 'linkedin', contact_location: 'footer_social' })}
-                  >
-                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.28c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.28h-3v-5.6c0-1.337-.025-3.063-1.867-3.063-1.868 0-2.154 1.459-2.154 2.967v5.696h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.563 2.844-1.563 3.042 0 3.604 2.002 3.604 4.604v5.592z" />
-                    </svg>
-                  </a>
-                  
-                  <a 
-                    href="https://adamzasada.medium.com/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-white/80 hover:text-white transition-all duration-200 hover:scale-110"
-                    aria-label="Medium Blog"
-                    onClick={() => trackContactClick({ contact_method: 'medium', contact_location: 'footer_social' })}
-                  >
-                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Footer */}
-        <footer className="text-center py-8 text-slate-600">
-          <p>© 2025 Adam Zasada. Building the future, one project at a time.</p>
-        </footer>
-      </div>
+    <div className="w-32 h-32 mx-auto relative group">
+      <Image 
+        src="/adag1o.jpg" 
+        alt="Adam Zasada - Product Leader & Banking Infrastructure Architect" 
+        width={128}
+        height={128}
+        className="w-full h-full rounded-2xl object-cover shadow-2xl border-4 border-white/50 transition-transform duration-300 group-hover:scale-105"
+        priority
+        placeholder="blur"
+        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHB0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+      />
     </div>
   );
-} 
+});
+
+const CompanyBadge = memo(function CompanyBadge({ 
+  color, 
+  company, 
+  detail 
+}: { 
+  color: string; 
+  company: string; 
+  detail: string; 
+}) {
+  return (
+    <span className="flex items-center gap-3 text-sm font-medium text-slate-700 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-200/50 shadow-sm">
+      <span className={`w-2 h-2 ${color} rounded-full`}></span>
+      <span className="text-slate-800 font-semibold">{company}</span>
+      <span className="text-slate-600">({detail})</span>
+    </span>
+  );
+});
+
+const ExperienceCard = memo(function ExperienceCard({
+  href,
+  icon,
+  title,
+  role,
+  description,
+  colorClasses
+}: {
+  href?: string;
+  icon: string;
+  title: string;
+  role: string;
+  description: string;
+  colorClasses: string;
+}) {
+  const CardContent = (
+    <div className={`group block ${colorClasses} rounded-xl p-6 border shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2`}>
+      <div className="flex items-center gap-3 mb-3">
+        <div className="w-12 h-12 bg-gradient-to-br from-slate-600 to-slate-700 rounded-xl flex items-center justify-center text-white text-xl shadow-lg group-hover:shadow-xl transition-shadow">
+          {icon}
+        </div>
+        <div>
+          <h3 className="font-bold text-slate-900 group-hover:text-black transition-colors">{title}</h3>
+          <p className="text-sm text-slate-800 font-medium">{role}</p>
+        </div>
+      </div>
+      <p className="text-sm text-slate-800 leading-relaxed font-medium">{description}</p>
+    </div>
+  );
+
+  if (href) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" aria-label={`Learn more about ${title}`}>
+        {CardContent}
+      </a>
+    );
+  }
+
+  return CardContent;
+});
+
+const ContactButton = memo(function ContactButton({
+  href,
+  icon,
+  text,
+  variant = 'primary',
+  onClick
+}: {
+  href: string;
+  icon: React.ReactNode;
+  text: string;
+  variant?: 'primary' | 'secondary';
+  onClick?: () => void;
+}) {
+  const baseClasses = "group inline-flex items-center gap-3 px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2";
+  const variantClasses = variant === 'primary' 
+    ? "bg-white text-blue-600 hover:bg-blue-50 focus:ring-blue-500"
+    : "bg-black text-white hover:bg-gray-900 focus:ring-gray-500";
+
+  return (
+    <a 
+      href={href}
+      target="_blank" 
+      rel="noopener noreferrer"
+      className={`${baseClasses} ${variantClasses}`}
+      onClick={onClick}
+      aria-label={`Contact via ${text}`}
+    >
+      <span className="group-hover:scale-110 transition-transform">
+        {icon}
+      </span>
+      {text}
+    </a>
+  );
+});
+
+export default function Home() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-yellow-100 via-white to-orange-100">
+      {/* Sophisticated background elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-slate-600/30 to-gray-800/30 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-slate-700/30 to-gray-900/30 rounded-full blur-3xl"></div>
+      </div>
+
+      {/* Header Section */}
+      <header className="relative z-10 max-w-6xl mx-auto px-6 pt-16 pb-8">
+        <div className="text-center space-y-6">
+          <Suspense fallback={<div className="w-32 h-32 mx-auto bg-slate-200 rounded-2xl animate-pulse" />}>
+            <ProfileImage />
+          </Suspense>
+          
+          <div className="space-y-3">
+            <h1 className="text-5xl md:text-6xl font-bold text-slate-900 tracking-tight leading-tight">
+              Adam Zasada
+            </h1>
+            <h2 className="text-xl md:text-2xl text-slate-700 font-medium mb-6 tracking-wide">
+              Product Leader & Infrastructure and Growth
+            </h2>
+            <p className="text-base text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
+              Warsaw • LSE Graduate • From Ibiza DJ to Web3 Product & Growth Strategist
+            </p>
+            <p className="text-sm text-slate-500 max-w-2xl mx-auto mt-3 italic font-light">
+              Some teams set the pace. I set new standards.
+            </p>
+            
+            <div className="flex flex-wrap justify-center gap-6 pt-4">
+              <CompanyBadge color="bg-blue-500" company="0xKYC" detail="$200K raised" />
+              <CompanyBadge color="bg-emerald-500" company="BabyDoge" detail="Product Lead" />
+              <CompanyBadge color="bg-violet-500" company="Vodeno" detail="€450M platform" />
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* About Section */}
+      <section className="relative z-10 max-w-5xl mx-auto px-6 py-16" aria-labelledby="about-heading">
+        <div className="bg-white/95 backdrop-blur-md rounded-3xl p-8 md:p-12 shadow-xl border border-slate-200/60 relative overflow-hidden">
+          <div className="relative z-10">
+            <div className="text-center mb-12">
+              <h2 id="about-heading" className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 tracking-tight">
+                Track Record
+              </h2>
+              <p className="text-xl text-slate-700 max-w-3xl mx-auto leading-relaxed font-medium">
+                Delivered €450M banking platform, raised $200K, scaled teams of 10+. Eight years building infrastructure that scales.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+              <div className="lg:col-span-2 space-y-8 text-slate-800 text-lg leading-relaxed">
+                <div className="bg-gradient-to-br from-slate-50 to-gray-100 rounded-xl p-6 border border-slate-200/50 shadow-sm">
+                  <h3 className="text-xl font-semibold text-slate-800 mb-3 flex items-center gap-3">
+                    <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+                      <span className="text-white text-lg">🚀</span>
+                    </div>
+                    Zero → Scale
+                  </h3>
+                  <p className="text-slate-600 font-normal leading-relaxed">
+                    Co-founded 0xKYC: $200K raised from Outlier Ventures. Led Vodeno to €450M platform. Built for millions of users.
+                  </p>
+                </div>
+                
+                <div className="bg-gradient-to-br from-slate-50 to-gray-100 rounded-xl p-6 border border-slate-200/50 shadow-sm">
+                  <h3 className="text-xl font-semibold text-slate-800 mb-3 flex items-center gap-3">
+                    <div className="w-10 h-10 bg-emerald-500 rounded-lg flex items-center justify-center">
+                      <span className="text-white text-lg">💼</span>
+                    </div>
+                    Enterprise Ready
+                  </h3>
+                  <p className="text-slate-600 font-normal leading-relaxed">
+                    Banking-grade infrastructure. KYC systems across EU jurisdictions. SDK used by Request Finance, backed by Binance.
+                  </p>
+                </div>
+
+                <div className="space-y-4 pt-6">
+                  <div className="bg-gradient-to-br from-slate-50 to-gray-100 rounded-xl p-6 border border-slate-200/50 shadow-sm">
+                    <h3 className="text-xl font-semibold text-slate-800 mb-3 flex items-center gap-3">
+                      <div className="w-10 h-10 bg-violet-500 rounded-lg flex items-center justify-center">
+                        <span className="text-white text-lg">🎯</span>
+                      </div>
+                      Market Leadership
+                    </h3>
+                    <p className="text-slate-600 font-normal leading-relaxed">
+                      Scaled Elympics 300 → 10k users. Led product at BabyDoge across Solana, BNB, TON. Built what others theorize.
+                    </p>
+                  </div>
+                  <div className="text-sm text-slate-600 italic border-l-4 border-slate-300 pl-4 mt-8">
+                    <strong>Plus:</strong> <a href="https://soundcloud.com/adamrulesmusic" target="_blank" rel="noopener noreferrer" className="text-slate-700 hover:text-slate-900 underline transition-colors font-medium">Electronic music producer</a> (Burn Residency winner, performed across Europe).
+                  </div>
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="text-center p-6 bg-white/90 backdrop-blur-sm rounded-xl border border-slate-200/60 shadow-md">
+                  <div className="text-3xl font-bold text-slate-800">€450M</div>
+                  <div className="text-sm text-slate-600 font-medium">Platform Value</div>
+                  <div className="text-xs text-slate-500">Vodeno Infrastructure</div>
+                </div>
+                <div className="text-center p-6 bg-white/90 backdrop-blur-sm rounded-xl border border-slate-200/60 shadow-md">
+                  <div className="text-3xl font-bold text-slate-800">$200K</div>
+                  <div className="text-sm text-slate-600 font-medium">Funding Raised</div>
+                  <div className="text-xs text-slate-500">0xKYC Series</div>
+                </div>
+                <div className="text-center p-6 bg-white/90 backdrop-blur-sm rounded-xl border border-slate-200/60 shadow-md">
+                  <div className="text-3xl font-bold text-slate-800">10x</div>
+                  <div className="text-sm text-slate-600 font-medium">Growth Delivered</div>
+                  <div className="text-xs text-slate-500">Elympics Scale</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Experience Highlights */}
+      <section className="relative z-10 max-w-6xl mx-auto px-6 py-16" aria-labelledby="experience-heading">
+        <div className="text-center mb-12">
+          <h2 id="experience-heading" className="text-4xl font-bold text-slate-900 mb-6 tracking-tight">
+            Experience
+          </h2>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <ExperienceCard
+            href="https://0xkyc.id"
+            icon="🔐"
+            title="0xKYC"
+            role="Co-Founder & CEO"
+            description="Zero-knowledge identity protocol. Led team of 10+, raised $200K from Outlier Ventures and Celestia CTO."
+            colorClasses="bg-white/80 backdrop-blur-sm border-slate-200/60 shadow-md hover:shadow-lg"
+          />
+          
+          <ExperienceCard
+            href="https://babydoge.com"
+            icon="🐶"
+            title="BabyDoge"
+            role="Product Lead"
+            description="Led product and GTM for Solana, BNB, and TON token launchpads. Built AI agents for trading interfaces."
+            colorClasses="bg-white/80 backdrop-blur-sm border-slate-200/60 shadow-md hover:shadow-lg"
+          />
+          
+          <ExperienceCard
+            href="https://soulagents.io"
+            icon="🤖"
+            title="Soul Agents"
+            role="Founder"
+            description="AI brand agents on Base with paying users from day one. Solo-coded trading feature, placed 3rd at Brian AI Hackathon."
+            colorClasses="bg-white/80 backdrop-blur-sm border-slate-200/60 shadow-md hover:shadow-lg"
+          />
+          
+          <ExperienceCard
+            href="https://vodeno.com"
+            icon="🏦"
+            title="Vodeno"
+            role="Product Owner"
+            description="Delivered core infrastructure for €450M platform powering Aion Bank. Led cross-functional teams of 10+ engineers."
+            colorClasses="bg-white/80 backdrop-blur-sm border-slate-200/60 shadow-md hover:shadow-lg"
+          />
+          
+          <ExperienceCard
+            href="https://hinkal.pro"
+            icon="🔒"
+            title="Hinkal"
+            role="Ecosystem & Product Lead"
+            description="Privacy SDK for DeFi. Used by Request Finance, backed by Binance, Draper Associates, Orange DAO."
+            colorClasses="bg-white/80 backdrop-blur-sm border-slate-200/60 shadow-md hover:shadow-lg"
+          />
+          
+          <ExperienceCard
+            href="https://elympics.ai"
+            icon="🎮"
+            title="Elympics"
+            role="Associate to CEO"
+            description="Scaled community 300 → 10k users and increased daily gameplay to 4k+. Built strategic partnerships."
+            colorClasses="bg-white/80 backdrop-blur-sm border-slate-200/60 shadow-md hover:shadow-lg"
+          />
+        </div>
+      </section>
+
+      {/* Collaboration Section */}
+      <section className="relative z-10 max-w-6xl mx-auto px-6 py-16" aria-labelledby="collaboration-heading">
+        <div className="text-center mb-12">
+          <h2 id="collaboration-heading" className="text-4xl font-bold text-slate-900 mb-6 tracking-tight">
+            Value Proposition
+          </h2>
+          <p className="text-xl text-slate-700 max-w-3xl mx-auto font-medium leading-relaxed">
+            I define new categories and lead teams that build, launch, and scale what others only theorize.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-8 shadow-md border border-slate-200/60">
+            <h3 className="text-xl font-semibold text-slate-800 mb-6 flex items-center gap-3">
+              <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center text-white text-xl shadow-sm">
+                🎯
+              </div>
+              Proven Results
+            </h3>
+            <ul className="space-y-3 text-slate-600 text-sm leading-relaxed">
+              <li><strong className="text-slate-800">Scale:</strong> €450M platform, 10+ team leadership</li>
+              <li><strong className="text-slate-800">Funding:</strong> $200K raised from tier-1 VCs</li>
+              <li><strong className="text-slate-800">Growth:</strong> 300 → 10k user community scaling</li>
+            </ul>
+          </div>
+
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-8 shadow-md border border-slate-200/60">
+            <h3 className="text-xl font-semibold text-slate-800 mb-6 flex items-center gap-3">
+              <div className="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center text-white text-xl shadow-sm">
+                ⚡
+              </div>
+              Enterprise Ready
+            </h3>
+            <ul className="space-y-3 text-slate-600 text-sm leading-relaxed">
+              <li><strong className="text-slate-800">Banking:</strong> EU-compliant KYC, SEPA flows</li>
+              <li><strong className="text-slate-800">Web3:</strong> Zero-knowledge protocols, DeFi SDKs</li>
+              <li><strong className="text-slate-800">AI:</strong> Production ML systems, trading AI</li>
+            </ul>
+          </div>
+
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-8 shadow-md border border-slate-200/60">
+            <h3 className="text-xl font-semibold text-slate-800 mb-6 flex items-center gap-3">
+              <div className="w-12 h-12 bg-violet-500 rounded-xl flex items-center justify-center text-white text-xl shadow-sm">
+                💎
+              </div>
+              Market Position
+            </h3>
+            <ul className="space-y-3 text-slate-600 text-sm leading-relaxed">
+              <li><strong className="text-slate-800">Leadership:</strong> When I lead, the market follows</li>
+              <li><strong className="text-slate-800">Innovation:</strong> Building what others theorize</li>
+              <li><strong className="text-slate-800">Execution:</strong> Zero to scale, consistently delivered</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="relative z-10 max-w-5xl mx-auto px-6 py-16" aria-labelledby="contact-heading">
+        <div className="relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-700 via-blue-700 to-indigo-700 rounded-3xl blur-xl opacity-75"></div>
+          <div className="relative bg-gradient-to-r from-slate-700 via-blue-700 to-indigo-700 rounded-3xl p-8 md:p-12 text-center text-white shadow-2xl border border-slate-200/20">
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-slate-700/90 via-blue-700/90 to-indigo-700/90 backdrop-blur-sm"></div>
+            
+            <div className="relative z-10">
+              <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold mb-6">
+                Ready to Align?
+              </h2>
+              <p className="text-xl mb-8 text-blue-100 max-w-3xl mx-auto leading-relaxed font-medium">
+                Building something that matters? Something that serves millions? Let&apos;s see if we&apos;re aligned.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                <ContactButton
+                  href="https://t.me/adag1oeth"
+                  icon={
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M9.036 15.956l-.396 3.72c.567 0 .813-.243 1.11-.535l2.664-2.52 5.52 4.032c1.012.558 1.74.264 1.992-.936l3.612-16.92c.33-1.53-.558-2.13-1.548-1.77L2.1 9.18c-1.488.594-1.47 1.44-.27 1.824l4.62 1.44 10.74-6.78c.504-.324.966-.144.588.18" />
+                    </svg>
+                  }
+                  text="Telegram"
+                  onClick={() => trackContactClick({ contact_method: 'telegram', contact_location: 'cta_section' })}
+                />
+                
+                <ContactButton
+                  href="https://x.com/adag1oeth"
+                  icon={
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M22.46 5.924c-.793.352-1.644.59-2.538.698a4.48 4.48 0 001.963-2.475 8.94 8.94 0 01-2.828 1.082A4.48 4.48 0 0015.5 4c-2.48 0-4.5 2.02-4.5 4.5 0 .352.04.696.116 1.024C7.728 9.36 4.1 7.6 1.67 4.98c-.386.664-.608 1.436-.608 2.26 0 1.56.794 2.94 2.004 3.748-.736-.024-1.428-.226-2.034-.564v.056c0 2.18 1.552 4 3.612 4.416-.378.104-.776.16-1.188.16-.29 0-.57-.028-.844-.08.57 1.78 2.22 3.08 4.18 3.12A8.98 8.98 0 012 19.54c-.64 0-1.26-.038-1.872-.11A12.7 12.7 0 006.29 21.5c7.548 0 11.68-6.254 11.68-11.68 0-.18-.004-.36-.012-.54A8.18 8.18 0 0024 4.59a8.92 8.92 0 01-2.54.694z" />
+                    </svg>
+                  }
+                  text="X (Twitter)"
+                  variant="secondary"
+                  onClick={() => trackContactClick({ contact_method: 'twitter', contact_location: 'cta_section' })}
+                />
+              </div>
+
+              <div className="flex gap-6 justify-center">
+                {[
+                  { href: "https://github.com/adag1oeth", icon: "github", label: "GitHub" },
+                  { href: "https://linkedin.com/in/adag1oeth", icon: "linkedin", label: "LinkedIn" },
+                  { href: "https://adamzasada.medium.com/", icon: "medium", label: "Medium Blog" }
+                ].map(({ href, icon, label }) => (
+                  <a 
+                    key={icon}
+                    href={href}
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-white/80 hover:text-white transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-slate-700 rounded-lg p-2"
+                    aria-label={label}
+                    onClick={() => trackContactClick({ contact_method: icon as 'github' | 'linkedin' | 'medium', contact_location: 'footer_social' })}
+                  >
+                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                      {icon === 'github' && <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.867 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.461-1.11-1.461-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.091-.646.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.699 1.028 1.592 1.028 2.683 0 3.841-2.338 4.687-4.566 4.936.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.749 0 .268.18.579.688.481C19.135 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z" />}
+                      {icon === 'linkedin' && <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.28c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.28h-3v-5.6c0-1.337-.025-3.063-1.867-3.063-1.868 0-2.154 1.459-2.154 2.967v5.696h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.563 2.844-1.563 3.042 0 3.604 2.002 3.604 4.604v5.592z" />}
+                      {icon === 'medium' && <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>}
+                    </svg>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="relative z-10 text-center py-8 text-slate-800" role="contentinfo">
+        <p className="text-base font-medium text-slate-600">
+          © 2025 Adam Zasada. Product Leader & Founder.
+        </p>
+      </footer>
+    </div>
+  );
+}

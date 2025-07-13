@@ -1,0 +1,20 @@
+{
+  "name": "Adam Zasada - Product Leader & Banking Infrastructure Architect",
+  "short_name": "Adam Zasada",
+  "description": "Builder of €450M banking platforms and zero-knowledge protocols. Product leader with 8+ years experience.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#1e293b",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["business", "productivity", "professional"],
+  "lang": "en-US",
+  "dir": "ltr"
+}
