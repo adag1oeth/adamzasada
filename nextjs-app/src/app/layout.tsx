@@ -16,10 +16,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://adamzasada.com'),
   title: {
-    default: "Adam Zasada - Product Leader & Infrastructure and Growth",
+    default: "Adam Zasada | Product Leader & Growth Strategist | Web3 Infrastructure",
     template: "%s | Adam Zasada"
   },
-  description: "Builder of €450M banking platforms and zero-knowledge protocols. 8+ years leading product teams at Vodeno, Bitwala, and Web3 startups. Based in Warsaw, Poland.",
+  description: "Product leader who scaled €450M banking platforms and raised $200K for zero-knowledge protocols. 8+ years building Web3 infrastructure at Vodeno, BabyDoge, 0xKYC. Warsaw-based.",
   keywords: [
     "Product Leadership",
     "Banking Infrastructure", 
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   classification: "Business",
   openGraph: {
     type: "profile",
-    title: "Adam Zasada - Product Leader & Infrastructure and Growth",
+    title: "Adam Zasada | Product Leader & Growth Strategist | Web3 Infrastructure",
     description: "Builder of €450M banking platforms and zero-knowledge protocols. Led product teams at Vodeno, Bitwala, and founded 0xKYC ($200K raised from Outlier Ventures).",
     url: "https://adamzasada.com",
     siteName: "Adam Zasada Portfolio",
@@ -71,8 +71,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@adag1oeth",
     creator: "@adag1oeth",
-    title: "Adam Zasada - Product Leader & Infrastructure and Growth",
-    description: "Builder of €450M banking platforms. Led product at Vodeno, Bitwala. Founded 0xKYC ($200K raised). Warsaw-based.",
+    title: "Adam Zasada | Product Leader & Growth Strategist | Web3 Infrastructure",
+    description: "Product leader who scaled €450M banking platforms and raised $200K for zero-knowledge protocols. Warsaw-based Web3 infrastructure expert.",
     images: {
       url: "/adag1o.jpg",
       alt: "Adam Zasada - Product Leader and Banking Infrastructure Architect",
@@ -150,7 +150,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "Adam Zasada",
-              "jobTitle": "Product Leader & Infrastructure and Growth",
+              "jobTitle": "Product Leader & Growth Strategist",
               "description": "Builder of €450M banking platforms and zero-knowledge protocols",
               "url": "https://adamzasada.com",
               "image": "https://adamzasada.com/adag1o.jpg",

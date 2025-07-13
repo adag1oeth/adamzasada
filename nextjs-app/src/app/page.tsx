@@ -137,7 +137,7 @@ export default function Home() {
               Adam Zasada
             </h1>
             <h2 className="text-xl md:text-2xl text-slate-700 font-medium mb-6 tracking-wide">
-              Product Leader & Infrastructure and Growth
+              Product Leader & Growth Strategist
             </h2>
             <p className="text-base text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
               Warsaw • LSE Graduate • From Ibiza DJ to Web3 Product & Growth Strategist
