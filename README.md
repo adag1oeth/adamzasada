@@ -13,7 +13,7 @@ This is my personal website and digital business card. Here you’ll find:
 - My professional bio and background
 - Project showcase and work samples
 - Contact info and social links
-- Clean, modern design — fully responsive and optimized for all devices
+- Clean, modern design, fully responsive and optimized for all devices
 
 ## ✉️ Contact
 
@@ -23,4 +23,4 @@ This is my personal website and digital business card. Here you’ll find:
 
 ---
 
-_A professional portfolio website showcasing my work and contact information._
+A professional portfolio website showcasing my work and contact information.
