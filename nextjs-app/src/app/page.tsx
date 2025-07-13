@@ -175,7 +175,7 @@ export default function Home() {
                     Zero → Scale
                   </h3>
                   <p className="text-slate-600 font-normal leading-relaxed">
-                    Co-founded 0xKYC: $200K raised from Outlier Ventures, BuffiCorn Ventures, Celestia's CTO and other angels. Delivered core infrastructure for Vodeno's €450M-backed platform.
+                    Co-founded 0xKYC: $200K raised from Outlier Ventures, BuffiCorn Ventures, Celestia&apos;s CTO and other angels. Delivered core infrastructure for Vodeno&apos;s €450M-backed platform.
                   </p>
                 </div>
                 
