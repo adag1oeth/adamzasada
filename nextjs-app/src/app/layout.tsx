@@ -16,10 +16,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://adamzasada.com'),
   title: {
-    default: "Adam Zasada | Product Leader & Growth Strategist | Web3 Infrastructure",
+    default: "Adam Zasada | Product Leader, Founder & GTM Advisor | Web3 Infrastructure",
     template: "%s | Adam Zasada"
   },
-  description: "Product leader who scaled €450M banking platforms and raised $200K for zero-knowledge protocols. 8+ years building Web3 infrastructure at Vodeno, BabyDoge, 0xKYC. Warsaw-based.",
+  description: "Product leader who delivered core infrastructure for €450M-backed platform and raised $200K for zero-knowledge protocols. 8+ years building Web3 products at Vodeno, BabyDoge, 0xKYC. Warsaw-based.",
   keywords: [
     "Product Leadership",
     "Banking Infrastructure", 
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   classification: "Business",
   openGraph: {
     type: "profile",
-    title: "Adam Zasada | Product Leader & Growth Strategist | Web3 Infrastructure",
+    title: "Adam Zasada | Product Leader, Founder & GTM Advisor | Web3 Infrastructure",
     description: "Builder of €450M banking platforms and zero-knowledge protocols. Led product teams at Vodeno, Bitwala, and founded 0xKYC ($200K raised from Outlier Ventures).",
     url: "https://adamzasada.com",
     siteName: "Adam Zasada Portfolio",
@@ -71,8 +71,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@adag1oeth",
     creator: "@adag1oeth",
-    title: "Adam Zasada | Product Leader & Growth Strategist | Web3 Infrastructure",
-    description: "Product leader who scaled €450M banking platforms and raised $200K for zero-knowledge protocols. Warsaw-based Web3 infrastructure expert.",
+    title: "Adam Zasada | Product Leader, Founder & GTM Advisor | Web3 Infrastructure",
+    description: "Product leader who delivered core infrastructure for €450M-backed platform and raised $200K for zero-knowledge protocols. Warsaw-based Web3 product expert.",
     images: {
       url: "/adag1o.jpg",
       alt: "Adam Zasada - Product Leader and Banking Infrastructure Architect",
@@ -81,7 +81,6 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon.svg", type: "image/svg+xml" },
     ],
     shortcut: "/favicon.ico",
     apple: [
@@ -150,7 +149,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "Adam Zasada",
-              "jobTitle": "Product Leader & Growth Strategist",
+              "jobTitle": "Product Leader, Founder & GTM Advisor",
               "description": "Builder of €450M banking platforms and zero-knowledge protocols",
               "url": "https://adamzasada.com",
               "image": "https://adamzasada.com/adag1o.jpg",

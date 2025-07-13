@@ -126,7 +126,7 @@ export default function Home() {
       </div>
 
       {/* Header Section */}
-      <header className="relative z-10 max-w-6xl mx-auto px-6 pt-16 pb-8">
+      <header className="relative z-10 max-w-6xl mx-auto px-6 pt-12 pb-6">
         <div className="text-center space-y-6">
           <Suspense fallback={<div className="w-32 h-32 mx-auto bg-slate-200 rounded-2xl animate-pulse" />}>
             <ProfileImage />
@@ -137,34 +137,31 @@ export default function Home() {
               Adam Zasada
             </h1>
             <h2 className="text-xl md:text-2xl text-slate-700 font-medium mb-6 tracking-wide">
-              Product Leader & Growth Strategist
+              Product Leader, Founder & GTM Advisor
             </h2>
-            <p className="text-base text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
-              Warsaw • LSE Graduate • From Ibiza DJ to Web3 Product & Growth Strategist
-            </p>
             <p className="text-sm text-slate-500 max-w-2xl mx-auto mt-3 italic font-light">
-              Some teams set the pace. I set new standards.
+              I don&apos;t follow markets. I create them.
             </p>
             
             <div className="flex flex-wrap justify-center gap-6 pt-4">
+              <CompanyBadge color="bg-emerald-500" company="Soul Agents" detail="Live on Base" />
               <CompanyBadge color="bg-blue-500" company="0xKYC" detail="$200K raised" />
-              <CompanyBadge color="bg-emerald-500" company="BabyDoge" detail="Product Lead" />
-              <CompanyBadge color="bg-violet-500" company="Vodeno" detail="€450M platform" />
+              <CompanyBadge color="bg-violet-500" company="Hinkal" detail="Private SDK Lead" />
             </div>
           </div>
         </div>
       </header>
 
       {/* About Section */}
-      <section className="relative z-10 max-w-5xl mx-auto px-6 py-16" aria-labelledby="about-heading">
+      <section className="relative z-10 max-w-5xl mx-auto px-6 py-12" aria-labelledby="about-heading">
         <div className="bg-white/95 backdrop-blur-md rounded-3xl p-8 md:p-12 shadow-xl border border-slate-200/60 relative overflow-hidden">
           <div className="relative z-10">
-            <div className="text-center mb-12">
-              <h2 id="about-heading" className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 tracking-tight">
+            <div className="text-center mb-8">
+              <h2 id="about-heading" className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
                 Track Record
               </h2>
               <p className="text-xl text-slate-700 max-w-3xl mx-auto leading-relaxed font-medium">
-                Delivered €450M banking platform, raised $200K, scaled teams of 10+. Eight years building infrastructure that scales.
+                LSE graduate and builder with 8+ years across Web3 products, leadership, and GTM. Delivered core infrastructure for €450M-backed platform, raised $200K from top VCs, scaled teams of 10+. $50M+ monthly private transaction volume at Hinkal.
               </p>
             </div>
             
@@ -178,7 +175,7 @@ export default function Home() {
                     Zero → Scale
                   </h3>
                   <p className="text-slate-600 font-normal leading-relaxed">
-                    Co-founded 0xKYC: $200K raised from Outlier Ventures. Led Vodeno to €450M platform. Built for millions of users.
+                    Co-founded 0xKYC: $200K raised from Outlier Ventures, BuffiCorn Ventures, Celestia's CTO and other angels. Delivered core infrastructure for Vodeno's €450M-backed platform.
                   </p>
                 </div>
                 
@@ -207,7 +204,7 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="text-sm text-slate-600 italic border-l-4 border-slate-300 pl-4 mt-8">
-                    <strong>Plus:</strong> <a href="https://soundcloud.com/adamrulesmusic" target="_blank" rel="noopener noreferrer" className="text-slate-700 hover:text-slate-900 underline transition-colors font-medium">Electronic music producer</a> (Burn Residency winner, performed across Europe).
+                    <strong>Plus:</strong> <a href="https://soundcloud.com/adamrulesmusic" target="_blank" rel="noopener noreferrer" className="text-slate-700 hover:text-slate-900 underline transition-colors font-medium">Music producer turned product leader</a> (Burn Residency winner 2012, shared stage with Solomun, Sven Väth, and Adam Port).
                   </div>
                 </div>
               </div>
@@ -221,12 +218,17 @@ export default function Home() {
                 <div className="text-center p-6 bg-white/90 backdrop-blur-sm rounded-xl border border-slate-200/60 shadow-md">
                   <div className="text-3xl font-bold text-slate-800">$200K</div>
                   <div className="text-sm text-slate-600 font-medium">Funding Raised</div>
-                  <div className="text-xs text-slate-500">0xKYC Series</div>
+                  <div className="text-xs text-slate-500">0xKYC, Inc.</div>
                 </div>
                 <div className="text-center p-6 bg-white/90 backdrop-blur-sm rounded-xl border border-slate-200/60 shadow-md">
                   <div className="text-3xl font-bold text-slate-800">10x</div>
                   <div className="text-sm text-slate-600 font-medium">Growth Delivered</div>
                   <div className="text-xs text-slate-500">Elympics Scale</div>
+                </div>
+                <div className="text-center p-6 bg-white/90 backdrop-blur-sm rounded-xl border border-slate-200/60 shadow-md">
+                  <div className="text-3xl font-bold text-slate-800">$50M+</div>
+                  <div className="text-sm text-slate-600 font-medium">Monthly Transaction Volume</div>
+                  <div className="text-xs text-slate-500">Hinkal</div>
                 </div>
               </div>
             </div>
@@ -235,9 +237,9 @@ export default function Home() {
       </section>
 
       {/* Experience Highlights */}
-      <section className="relative z-10 max-w-6xl mx-auto px-6 py-16" aria-labelledby="experience-heading">
-        <div className="text-center mb-12">
-          <h2 id="experience-heading" className="text-4xl font-bold text-slate-900 mb-6 tracking-tight">
+      <section className="relative z-10 max-w-6xl mx-auto px-6 py-12" aria-labelledby="experience-heading">
+        <div className="text-center mb-8">
+          <h2 id="experience-heading" className="text-4xl font-bold text-slate-900 mb-4 tracking-tight">
             Experience
           </h2>
         </div>
@@ -247,35 +249,8 @@ export default function Home() {
             href="https://0xkyc.id"
             icon="🔐"
             title="0xKYC"
-            role="Co-Founder & CEO"
-            description="Zero-knowledge identity protocol. Led team of 10+, raised $200K from Outlier Ventures and Celestia CTO."
-            colorClasses="bg-white/80 backdrop-blur-sm border-slate-200/60 shadow-md hover:shadow-lg"
-          />
-          
-          <ExperienceCard
-            href="https://babydoge.com"
-            icon="🐶"
-            title="BabyDoge"
-            role="Product Lead"
-            description="Led product and GTM for Solana, BNB, and TON token launchpads. Built AI agents for trading interfaces."
-            colorClasses="bg-white/80 backdrop-blur-sm border-slate-200/60 shadow-md hover:shadow-lg"
-          />
-          
-          <ExperienceCard
-            href="https://soulagents.io"
-            icon="🤖"
-            title="Soul Agents"
-            role="Founder"
-            description="AI brand agents on Base with paying users from day one. Solo-coded trading feature, placed 3rd at Brian AI Hackathon."
-            colorClasses="bg-white/80 backdrop-blur-sm border-slate-200/60 shadow-md hover:shadow-lg"
-          />
-          
-          <ExperienceCard
-            href="https://vodeno.com"
-            icon="🏦"
-            title="Vodeno"
-            role="Product Owner"
-            description="Delivered core infrastructure for €450M platform powering Aion Bank. Led cross-functional teams of 10+ engineers."
+            role="CEO & Co-Founder"
+            description="Zero-knowledge identity protocol. Led team of 10+ (7 full-time), raised $200K from Outlier Ventures, BuffiCorn Ventures, Celestia CTO and other angels. Partnered with Onfido."
             colorClasses="bg-white/80 backdrop-blur-sm border-slate-200/60 shadow-md hover:shadow-lg"
           />
           
@@ -284,7 +259,34 @@ export default function Home() {
             icon="🔒"
             title="Hinkal"
             role="Ecosystem & Product Lead"
-            description="Privacy SDK for DeFi. Used by Request Finance, backed by Binance, Draper Associates, Orange DAO."
+            description="Privacy SDK powering over $50M in monthly transaction volume. Worked with DeFi industry leaders. Used by Request Finance. Backed by Binance and Draper Associates."
+            colorClasses="bg-white/80 backdrop-blur-sm border-slate-200/60 shadow-md hover:shadow-lg"
+          />
+          
+          <ExperienceCard
+            href="https://soulagents.io"
+            icon="🤖"
+            title="Soul Agents"
+            role="Founder"
+            description="AI brand agents on Base with early paying users. Leading product, GTM, and coding. Solo-built trading feature that placed third at Brian AI Hackathon."
+            colorClasses="bg-white/80 backdrop-blur-sm border-slate-200/60 shadow-md hover:shadow-lg"
+          />
+          
+          <ExperienceCard
+            href="https://vodeno.com"
+            icon="🏦"
+            title="Vodeno"
+            role="Product Owner"
+            description="Delivered core infrastructure for €450M-backed platform powering Aion Bank and Revolut. Led cross-functional teams of 10+ engineers."
+            colorClasses="bg-white/80 backdrop-blur-sm border-slate-200/60 shadow-md hover:shadow-lg"
+          />
+          
+          <ExperienceCard
+            href="https://babydoge.com"
+            icon="🐶"
+            title="BabyDoge"
+            role="Product Lead"
+            description="Led product and GTM for Solana, BNB, and TON token launchpads. Built AI agents for chat and trading interfaces with weekly releases."
             colorClasses="bg-white/80 backdrop-blur-sm border-slate-200/60 shadow-md hover:shadow-lg"
           />
           
@@ -300,13 +302,13 @@ export default function Home() {
       </section>
 
       {/* Collaboration Section */}
-      <section className="relative z-10 max-w-6xl mx-auto px-6 py-16" aria-labelledby="collaboration-heading">
-        <div className="text-center mb-12">
-          <h2 id="collaboration-heading" className="text-4xl font-bold text-slate-900 mb-6 tracking-tight">
+      <section className="relative z-10 max-w-6xl mx-auto px-6 py-12" aria-labelledby="collaboration-heading">
+        <div className="text-center mb-8">
+          <h2 id="collaboration-heading" className="text-4xl font-bold text-slate-900 mb-4 tracking-tight">
             Value Proposition
           </h2>
           <p className="text-xl text-slate-700 max-w-3xl mx-auto font-medium leading-relaxed">
-            I define new categories and lead teams that build, launch, and scale what others only theorize.
+            I define new categories and lead teams who build, launch, and scale what others only theorize. When I lead, results follow.
           </p>
         </div>
         
@@ -320,8 +322,8 @@ export default function Home() {
             </h3>
             <ul className="space-y-3 text-slate-600 text-sm leading-relaxed">
               <li><strong className="text-slate-800">Scale:</strong> €450M platform, 10+ team leadership</li>
-              <li><strong className="text-slate-800">Funding:</strong> $200K raised from tier-1 VCs</li>
-              <li><strong className="text-slate-800">Growth:</strong> 300 → 10k user community scaling</li>
+              <li><strong className="text-slate-800">Funding:</strong> $200K raised from Outlier Ventures, BuffiCorn Ventures, Celestia CTO</li>
+              <li><strong className="text-slate-800">Growth:</strong> 300 → 10k user community scaling, 20+ events including ETHWarsaw, digital communities across Discord, X and Telegram</li>
             </ul>
           </div>
 
@@ -334,8 +336,8 @@ export default function Home() {
             </h3>
             <ul className="space-y-3 text-slate-600 text-sm leading-relaxed">
               <li><strong className="text-slate-800">Banking:</strong> EU-compliant KYC, SEPA flows</li>
-              <li><strong className="text-slate-800">Web3:</strong> Zero-knowledge protocols, DeFi SDKs</li>
-              <li><strong className="text-slate-800">AI:</strong> Production ML systems, trading AI</li>
+              <li><strong className="text-slate-800">Web3:</strong> Zero-knowledge protocols, DeFi SDKs, token launchpads, AI trading agents, privacy infrastructure, NFTs</li>
+              <li><strong className="text-slate-800">AI:</strong> AI-enabled apps and dApps, trading AI</li>
             </ul>
           </div>
 
@@ -347,16 +349,16 @@ export default function Home() {
               Market Position
             </h3>
             <ul className="space-y-3 text-slate-600 text-sm leading-relaxed">
-              <li><strong className="text-slate-800">Leadership:</strong> When I lead, the market follows</li>
-              <li><strong className="text-slate-800">Innovation:</strong> Building what others theorize</li>
-              <li><strong className="text-slate-800">Execution:</strong> Zero to scale, consistently delivered</li>
+              <li><strong className="text-slate-800">Leadership:</strong> When I lead, the market follows. Event organization with people management skills and an artistic touch</li>
+              <li><strong className="text-slate-800">Innovation:</strong> First principles thinking. Building what others theorize</li>
+              <li><strong className="text-slate-800">Execution:</strong> Zero to scale, paying users from day one, weekly releases, third place at Brian AI Hackathon, consistently delivered</li>
             </ul>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section className="relative z-10 max-w-5xl mx-auto px-6 py-16" aria-labelledby="contact-heading">
+      <section className="relative z-10 max-w-5xl mx-auto px-6 py-12" aria-labelledby="contact-heading">
         <div className="relative">
           <div className="absolute inset-0 bg-gradient-to-r from-slate-700 via-blue-700 to-indigo-700 rounded-3xl blur-xl opacity-75"></div>
           <div className="relative bg-gradient-to-r from-slate-700 via-blue-700 to-indigo-700 rounded-3xl p-8 md:p-12 text-center text-white shadow-2xl border border-slate-200/20">
@@ -364,10 +366,10 @@ export default function Home() {
             
             <div className="relative z-10">
               <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold mb-6">
-                Ready to Align?
+                Ready to build something that matters?
               </h2>
               <p className="text-xl mb-8 text-blue-100 max-w-3xl mx-auto leading-relaxed font-medium">
-                Building something that matters? Something that serves millions? Let&apos;s see if we&apos;re aligned.
+                Let&apos;s move from vision to execution. Fast.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
