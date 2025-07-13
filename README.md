@@ -1,5 +1,26 @@
-- 👋 Hi, I’m Adam Zasada aka [adag1oeth](https://www.x.com/adag1oeth/).
-- 👀 Founder of [Soul Agents](https://www.x.com/soul_agents/) - building autonomous AI agents for Web3 - and ex-founder of [0xKYC](https://www.x.com/0xKYC/), a decentralized identity protocol backed by Outlier Ventures, BuffiCorn Ventures and Celestia’s CTO, amongst other angels 😇.
-- 🌱 I code in TypeScript, Python, MongoDB, and Vector databases for RAG-based systems. Previously built Web3 and BaaS banking infrastructure (e.g. used by Revolut). Fun fact: I was the youngest coding student at [PJATK](https://pja.edu.pl/) (age 12) and also a DJ at Café Mambo in Ibiza, playing with Solomun and others.
-- 💞️ Currently developing AI-driven Web3 tools at Soul Agents (won 3rd place in Brian AI hackathon - check the [trading repo](https://www.github.com/adamzasada/trading/)).
-- 📫 Let’s connect on [LinkedIn](https://www.linkedin.com/in/azasada/).
+# adamzasada.com
+
+Personal portfolio website for **Adam Zasada** — a modern, professional showcase built with [Next.js](https://nextjs.org/).
+
+## 🌐 Live Site
+
+👉 [https://adamzasada.com](https://adamzasada.com)
+
+## 📖 What’s This?
+
+This is Adam’s personal website and digital business card, featuring:
+
+- Professional bio and background
+- Project showcase and work samples
+- Contact information and social links
+- Clean, modern design — fully responsive and optimized for all devices
+
+## ✉️ Contact
+
+- Telegram: [@adag1oeth](https://t.me/adag1oeth)
+- X (Twitter): [@adag1oeth](https://x.com/adag1oeth)
+- LinkedIn: [adag1oeth](https://linkedin.com/in/adag1oeth)
+
+---
+
+_A professional portfolio website showcasing Adam Zasada’s work and contact information._
