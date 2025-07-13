@@ -1,6 +1,6 @@
 # adamzasada.com
 
-Personal portfolio website for **Adam Zasada** — a modern, professional showcase built with [Next.js](https://nextjs.org/).
+Personal portfolio website — my modern, professional showcase built with [Next.js](https://nextjs.org/).
 
 ## 🌐 Live Site
 
@@ -8,11 +8,11 @@ Personal portfolio website for **Adam Zasada** — a modern, professional showca
 
 ## 📖 What’s This?
 
-This is Adam’s personal website and digital business card, featuring:
+This is my personal website and digital business card. Here you’ll find:
 
-- Professional bio and background
+- My professional bio and background
 - Project showcase and work samples
-- Contact information and social links
+- Contact info and social links
 - Clean, modern design — fully responsive and optimized for all devices
 
 ## ✉️ Contact
@@ -23,4 +23,4 @@ This is Adam’s personal website and digital business card, featuring:
 
 ---
 
-_A professional portfolio website showcasing Adam Zasada’s work and contact information._
+_A professional portfolio website showcasing my work and contact information._
