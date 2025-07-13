@@ -140,7 +140,7 @@ export default function Home() {
               Product Leader, Founder & GTM Advisor
             </h2>
             <p className="text-sm text-slate-500 max-w-2xl mx-auto mt-3 italic font-light">
-              I don&apos;t follow markets. I create them.
+            Some teams set the pace. I set new standards.
             </p>
             
             <div className="flex flex-wrap justify-center gap-6 pt-4">
