@@ -23,4 +23,4 @@ This is my personal website and digital business card. Here you’ll find:
 
 ---
 
-A professional portfolio website showcasing my work and contact information.
+_A professional portfolio website showcasing my work and contact information._
