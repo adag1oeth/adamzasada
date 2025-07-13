@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://adamzasada.com'),
   title: {
-    default: "Adam Zasada - Product Leader & Banking Infrastructure Architect",
+    default: "Adam Zasada - Product Leader & Infrastructure and Growth",
     template: "%s | Adam Zasada"
   },
   description: "Builder of €450M banking platforms and zero-knowledge protocols. 8+ years leading product teams at Vodeno, Bitwala, and Web3 startups. Based in Warsaw, Poland.",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   classification: "Business",
   openGraph: {
     type: "profile",
-    title: "Adam Zasada - Product Leader & Banking Infrastructure Architect",
+    title: "Adam Zasada - Product Leader & Infrastructure and Growth",
     description: "Builder of €450M banking platforms and zero-knowledge protocols. Led product teams at Vodeno, Bitwala, and founded 0xKYC ($200K raised from Outlier Ventures).",
     url: "https://adamzasada.com",
     siteName: "Adam Zasada Portfolio",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@adag1oeth",
     creator: "@adag1oeth",
-    title: "Adam Zasada - Product Leader & Banking Infrastructure Architect",
+    title: "Adam Zasada - Product Leader & Infrastructure and Growth",
     description: "Builder of €450M banking platforms. Led product at Vodeno, Bitwala. Founded 0xKYC ($200K raised). Warsaw-based.",
     images: {
       url: "/adag1o.jpg",
@@ -150,7 +150,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "Adam Zasada",
-              "jobTitle": "Product Leader & Banking Infrastructure Architect",
+              "jobTitle": "Product Leader & Infrastructure and Growth",
               "description": "Builder of €450M banking platforms and zero-knowledge protocols",
               "url": "https://adamzasada.com",
               "image": "https://adamzasada.com/adag1o.jpg",
