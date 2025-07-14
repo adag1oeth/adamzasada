@@ -9,7 +9,7 @@ const ProfileImage = memo(function ProfileImage() {
   return (
     <div className="w-32 h-32 mx-auto relative group">
       <Image 
-        src="/adag1o.jpg" 
+        src="/adam.jpg" 
         alt="Adam Zasada - Product Leader & Banking Infrastructure Architect" 
         width={128}
         height={128}
@@ -52,7 +52,7 @@ const ExperienceCard = memo(function ExperienceCard({
   icon: string;
   title: string;
   role: string;
-  description: string;
+  description: string | React.ReactNode;
   colorClasses: string;
 }) {
   const CardContent = (
@@ -66,7 +66,7 @@ const ExperienceCard = memo(function ExperienceCard({
           <p className="text-sm text-slate-800 font-medium">{role}</p>
         </div>
       </div>
-      <p className="text-sm text-slate-800 leading-relaxed font-medium">{description}</p>
+      <div className="text-sm text-slate-800 leading-relaxed font-medium">{description}</div>
     </div>
   );
 
@@ -146,7 +146,7 @@ export default function Home() {
             <div className="flex flex-wrap justify-center gap-6 pt-4">
               <CompanyBadge color="bg-emerald-500" company="Soul Agents" detail="Live on Base" />
               <CompanyBadge color="bg-blue-500" company="0xKYC" detail="$200K raised" />
-              <CompanyBadge color="bg-violet-500" company="Hinkal" detail="Private SDK Lead" />
+              <CompanyBadge color="bg-violet-500" company="Hinkal" detail="Product Lead" />
             </div>
           </div>
         </div>
@@ -200,7 +200,7 @@ export default function Home() {
                       Market Leadership
                     </h3>
                     <p className="text-slate-600 font-normal leading-relaxed">
-                      Scaled Elympics 300 → 10k users. Led product at BabyDoge across Solana, BNB, TON. Built what others theorize.
+                      Scaled Elympics 300 → 10k users. Led product at BabyDoge across Solana, BSC, TON. Built relationships with top KOLs.
                     </p>
                   </div>
                   <div className="text-sm text-slate-600 italic border-l-4 border-slate-300 pl-4 mt-8">
@@ -213,7 +213,7 @@ export default function Home() {
                 <div className="text-center p-6 bg-white/90 backdrop-blur-sm rounded-xl border border-slate-200/60 shadow-md">
                   <div className="text-3xl font-bold text-slate-800">€450M</div>
                   <div className="text-sm text-slate-600 font-medium">Platform Value</div>
-                  <div className="text-xs text-slate-500">Vodeno Infrastructure</div>
+                  <div className="text-xs text-slate-500">Vodeno BaaS</div>
                 </div>
                 <div className="text-center p-6 bg-white/90 backdrop-blur-sm rounded-xl border border-slate-200/60 shadow-md">
                   <div className="text-3xl font-bold text-slate-800">$200K</div>
@@ -229,6 +229,11 @@ export default function Home() {
                   <div className="text-3xl font-bold text-slate-800">$50M+</div>
                   <div className="text-sm text-slate-600 font-medium">Monthly Transaction Volume</div>
                   <div className="text-xs text-slate-500">Hinkal</div>
+                </div>
+                <div className="text-center p-6 bg-white/90 backdrop-blur-sm rounded-xl border border-slate-200/60 shadow-md">
+                  <div className="text-3xl font-bold text-slate-800">3</div>
+                  <div className="text-sm text-slate-600 font-medium">Launchpads Managed</div>
+                  <div className="text-xs text-slate-500">SOL, BSC, TON</div>
                 </div>
               </div>
             </div>
@@ -250,7 +255,7 @@ export default function Home() {
             icon="🔐"
             title="0xKYC"
             role="CEO & Co-Founder"
-            description="Zero-knowledge identity protocol. Led team of 10+ (7 full-time), raised $200K from Outlier Ventures, BuffiCorn Ventures, Celestia CTO and other angels. Partnered with Onfido."
+            description="Zero-knowledge identity protocol. Led team of 10+ (7 full-time), raised $200K from Outlier Ventures, BuffiCorn Ventures, Celestia's CTO and other angels. Partnered with Onfido."
             colorClasses="bg-white/80 backdrop-blur-sm border-slate-200/60 shadow-md hover:shadow-lg"
           />
           
@@ -259,7 +264,7 @@ export default function Home() {
             icon="🔒"
             title="Hinkal"
             role="Ecosystem & Product Lead"
-            description="Privacy SDK powering over $50M in monthly transaction volume. Worked with DeFi industry leaders. Used by Request Finance. Backed by Binance and Draper Associates."
+            description="Privacy SDK, used by Request Finance, powering over $50M in monthly transaction volume. Worked with DeFi industry leaders. Backed by Binance and Draper Associates."
             colorClasses="bg-white/80 backdrop-blur-sm border-slate-200/60 shadow-md hover:shadow-lg"
           />
           
@@ -268,7 +273,7 @@ export default function Home() {
             icon="🤖"
             title="Soul Agents"
             role="Founder"
-            description="AI brand agents on Base with early paying users. Leading product, GTM, and coding. Solo-built trading feature that placed third at Brian AI Hackathon."
+            description={<>AI brand agents on Base with early paying users. Leading product, GTM, and coding. Solo-built trading feature that placed third at Brian AI Hackathon. Try it out at <span className="text-purple-600 font-semibold">soulagents.io</span></>}
             colorClasses="bg-white/80 backdrop-blur-sm border-slate-200/60 shadow-md hover:shadow-lg"
           />
           
@@ -286,7 +291,7 @@ export default function Home() {
             icon="🐶"
             title="BabyDoge"
             role="Product Lead"
-            description="Led product and GTM for Solana, BNB, and TON token launchpads. Built AI agents for chat and trading interfaces with weekly releases."
+            description="Led product and GTM for Solana, BSC, and TON token launchpads. Built AI agents for chat and trading interfaces with weekly releases."
             colorClasses="bg-white/80 backdrop-blur-sm border-slate-200/60 shadow-md hover:shadow-lg"
           />
           
@@ -295,7 +300,7 @@ export default function Home() {
             icon="🎮"
             title="Elympics"
             role="Associate to CEO"
-            description="Scaled community 300 → 10k users and increased daily gameplay to 4k+. Built strategic partnerships."
+            description="Scaled community 300 → 10k users and increased daily gameplay to 4k+. Built strategic partnerships with leading Web3 brands."
             colorClasses="bg-white/80 backdrop-blur-sm border-slate-200/60 shadow-md hover:shadow-lg"
           />
         </div>
@@ -308,7 +313,7 @@ export default function Home() {
             Value Proposition
           </h2>
           <p className="text-xl text-slate-700 max-w-3xl mx-auto font-medium leading-relaxed">
-            I define new categories and lead teams who build, launch, and scale what others only theorize. When I lead, results follow.
+            I define new categories and lead teams who build, launch, and scale.
           </p>
         </div>
         
@@ -322,8 +327,8 @@ export default function Home() {
             </h3>
             <ul className="space-y-3 text-slate-600 text-sm leading-relaxed">
               <li><strong className="text-slate-800">Scale:</strong> €450M platform, 10+ team leadership</li>
-              <li><strong className="text-slate-800">Funding:</strong> $200K raised from Outlier Ventures, BuffiCorn Ventures, Celestia CTO</li>
-              <li><strong className="text-slate-800">Growth:</strong> 300 → 10k user community scaling, 20+ events including ETHWarsaw, digital communities across Discord, X and Telegram</li>
+              <li><strong className="text-slate-800">Funding:</strong> $200K raised from Outlier Ventures, BuffiCorn Ventures, Celestia&apos;s CTO and other angels</li>
+              <li><strong className="text-slate-800">Growth:</strong> 300 → 10k user community scaling, 20+ events including ETHWarsaw closing event, and major events for 1k+ people. Digital communities across Discord, X, Telegram, TikTok, and Instagram</li>
             </ul>
           </div>
 
@@ -336,8 +341,8 @@ export default function Home() {
             </h3>
             <ul className="space-y-3 text-slate-600 text-sm leading-relaxed">
               <li><strong className="text-slate-800">Banking:</strong> EU-compliant KYC, SEPA flows</li>
-              <li><strong className="text-slate-800">Web3:</strong> Zero-knowledge protocols, DeFi SDKs, token launchpads, AI trading agents, privacy infrastructure, NFTs</li>
-              <li><strong className="text-slate-800">AI:</strong> AI-enabled apps and dApps, trading AI</li>
+              <li><strong className="text-slate-800">Web3:</strong> Zero-knowledge protocols, DeFi SDKs, token launchpads, AI agents, privacy infrastructure, NFTs, Web3 Gaming</li>
+              <li><strong className="text-slate-800">AI:</strong> AI-enabled apps and dApps, trading AI, AI automation, and AI-powered infrastructure</li>
             </ul>
           </div>
 
