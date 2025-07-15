@@ -151,14 +151,16 @@ const ContactButton = memo(function ContactButton({
       onClick={onClick}
       aria-label={`Contact via ${text}`}
       onMouseEnter={(e) => {
-        e.target.style.transform = 'scale(1.05) translateY(-2px)';
-        e.target.style.boxShadow = isPrimary
+        const target = e.target as HTMLElement;
+        target.style.transform = 'scale(1.05) translateY(-2px)';
+        target.style.boxShadow = isPrimary
           ? '0 12px 40px rgba(59, 130, 246, 0.2), 0 4px 16px rgba(59, 130, 246, 0.15)'
           : '0 12px 40px rgba(0, 0, 0, 0.4), 0 4px 16px rgba(0, 0, 0, 0.3)';
       }}
       onMouseLeave={(e) => {
-        e.target.style.transform = 'scale(1) translateY(0)';
-        e.target.style.boxShadow = isPrimary
+        const target = e.target as HTMLElement;
+        target.style.transform = 'scale(1) translateY(0)';
+        target.style.boxShadow = isPrimary
           ? '0 8px 32px rgba(59, 130, 246, 0.15), 0 2px 8px rgba(59, 130, 246, 0.1)'
           : '0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2)';
       }}
