@@ -571,7 +571,13 @@ export default function Home() {
 
                 <ContactButton
                   href="https://farcaster.xyz/adag1o.eth"
-                  icon={<span className="w-6 h-6"></span>}
+                  icon={
+                    <img 
+                      src="/farcaster.svg" 
+                      alt="Farcaster" 
+                      className="w-6 h-6"
+                    />
+                  }
                   text="Farcaster"
                   variant="secondary"
                   onClick={() => trackContactClick({ contact_method: 'farcaster', contact_location: 'cta_section' })}
