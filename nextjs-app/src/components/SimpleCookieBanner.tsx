@@ -80,12 +80,14 @@ export default function SimpleCookieBanner() {
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
             }}>
-              We use cookies
+              I use cookies
             </div>
             <div style={{ 
               fontSize: '13px',
-              color: 'rgba(255, 255, 255, 0.75)',
-              lineHeight: '1.4'
+              color: 'rgba(30, 41, 59, 0.9)',
+              lineHeight: '1.4',
+              textShadow: '0 1px 2px rgba(255, 255, 255, 0.5)',
+              fontWeight: '500'
             }}>
               Analytics to improve your experience
             </div>
