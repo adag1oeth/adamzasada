@@ -204,8 +204,8 @@ export default function RootLayout({
         <Analytics />
         <SpeedInsights />
         
-        {/* Google Analytics - Only loads in production */}
-        {process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+        {/* Google Analytics */}
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <>
             <script 
               async 
