@@ -200,7 +200,27 @@ export default function RootLayout({
           {children}
         </main>
         
-        {/* GDPR-Compliant Analytics - Only loads with consent */}
+        {/* Google Analytics - Always loads for detection */}
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <>
+            <script 
+              async 
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}');
+                `
+              }}
+            />
+          </>
+        )}
+        
+        {/* Vercel Analytics & Speed Insights */}
         <ConditionalAnalytics />
         
         {/* Cookie Consent Banner for EU Users */}

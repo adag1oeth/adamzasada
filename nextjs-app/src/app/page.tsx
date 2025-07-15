@@ -565,7 +565,7 @@ export default function Home() {
                     <img 
                       src="/x.svg" 
                       alt="X (Twitter)" 
-                      className="w-6 h-6"
+                      className="w-6 h-6 invert"
                     />
                   }
                   text="X (Twitter)"

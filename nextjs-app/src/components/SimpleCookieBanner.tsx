@@ -85,7 +85,7 @@ export default function SimpleCookieBanner() {
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
             }}>
-              I love cookies
+              This site uses cookies
             </div>
             <div style={{ 
               fontSize: '13px',
@@ -120,12 +120,14 @@ export default function SimpleCookieBanner() {
               WebkitBackdropFilter: 'blur(10px)',
             }}
             onMouseEnter={(e) => {
-              e.target.style.background = 'rgba(255, 255, 255, 0.15)';
-              e.target.style.transform = 'translateY(-1px)';
+              const target = e.currentTarget as HTMLButtonElement;
+              target.style.background = 'rgba(255, 255, 255, 0.15)';
+              target.style.transform = 'translateY(-1px)';
             }}
             onMouseLeave={(e) => {
-              e.target.style.background = 'rgba(255, 255, 255, 0.1)';
-              e.target.style.transform = 'translateY(0)';
+              const target = e.currentTarget as HTMLButtonElement;
+              target.style.background = 'rgba(255, 255, 255, 0.1)';
+              target.style.transform = 'translateY(0)';
             }}
           >
             Decline
@@ -146,12 +148,14 @@ export default function SimpleCookieBanner() {
               boxShadow: '0 4px 12px rgba(59, 130, 246, 0.4)',
             }}
             onMouseEnter={(e) => {
-              e.target.style.transform = 'translateY(-1px)';
-              e.target.style.boxShadow = '0 6px 16px rgba(59, 130, 246, 0.5)';
+              const target = e.currentTarget as HTMLButtonElement;
+              target.style.transform = 'translateY(-1px)';
+              target.style.boxShadow = '0 6px 16px rgba(59, 130, 246, 0.5)';
             }}
             onMouseLeave={(e) => {
-              e.target.style.transform = 'translateY(0)';
-              e.target.style.boxShadow = '0 4px 12px rgba(59, 130, 246, 0.4)';
+              const target = e.currentTarget as HTMLButtonElement;
+              target.style.transform = 'translateY(0)';
+              target.style.boxShadow = '0 4px 12px rgba(59, 130, 246, 0.4)';
             }}
           >
             Accept

@@ -6,13 +6,12 @@ import {
   GAContactEvent 
 } from '@/types/analytics';
 
-// Check if GA is loaded and we're in production
+// Check if GA is loaded
 export const isGAEnabled = (): boolean => {
   return (
     typeof window !== 'undefined' &&
     !!window.gtag &&
     typeof window.gtag === 'function' &&
-    process.env.NODE_ENV === 'production' &&
     !!process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
   );
 };
