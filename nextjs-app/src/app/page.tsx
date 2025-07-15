@@ -32,10 +32,42 @@ const CompanyBadge = memo(function CompanyBadge({
   detail: string; 
 }) {
   return (
-    <span className="flex items-center gap-3 text-sm font-medium text-slate-700 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-200/50 shadow-sm">
-      <span className={`w-2 h-2 ${color} rounded-full`}></span>
-      <span className="text-slate-800 font-semibold">{company}</span>
-      <span className="text-slate-600">({detail})</span>
+    <span 
+      className="group flex items-center gap-3 text-sm font-medium px-6 py-3 rounded-2xl border transition-all duration-300 hover:scale-[1.02] cursor-pointer"
+      style={{
+        background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        border: '1px solid rgba(255,255,255,0.2)',
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05)',
+      }}
+    >
+      <span 
+        className={`w-3 h-3 ${color} rounded-full transition-all duration-300 group-hover:scale-110`}
+        style={{
+          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)',
+        }}
+      ></span>
+      <span 
+        className="font-semibold transition-all duration-300"
+        style={{
+          background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text'
+        }}
+      >
+        {company}
+      </span>
+      <span 
+        className="transition-all duration-300"
+        style={{
+          color: 'rgba(30, 41, 59, 0.8)',
+          fontWeight: '500'
+        }}
+      >
+        ({detail})
+      </span>
     </span>
   );
 });
@@ -94,24 +126,61 @@ const ContactButton = memo(function ContactButton({
   variant?: 'primary' | 'secondary';
   onClick?: () => void;
 }) {
-  const baseClasses = "group inline-flex items-center gap-3 px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2";
-  const variantClasses = variant === 'primary' 
-    ? "bg-white text-blue-600 hover:bg-blue-50 focus:ring-blue-500"
-    : "bg-black text-white hover:bg-gray-900 focus:ring-gray-500";
-
+  const isPrimary = variant === 'primary';
+  
   return (
     <a 
       href={href}
       target="_blank" 
       rel="noopener noreferrer"
-      className={`${baseClasses} ${variantClasses}`}
+      className="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400/50"
+      style={{
+        background: isPrimary 
+          ? 'linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.15) 100%)'
+          : 'linear-gradient(135deg, rgba(30,41,59,0.95) 0%, rgba(15,23,42,0.95) 100%)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        border: isPrimary 
+          ? '1px solid rgba(255,255,255,0.3)'
+          : '1px solid rgba(255,255,255,0.1)',
+        boxShadow: isPrimary
+          ? '0 8px 32px rgba(59, 130, 246, 0.15), 0 2px 8px rgba(59, 130, 246, 0.1)'
+          : '0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2)',
+        color: isPrimary 
+          ? 'rgba(30, 41, 59, 0.9)'
+          : 'rgba(255, 255, 255, 0.95)'
+      }}
       onClick={onClick}
       aria-label={`Contact via ${text}`}
+      onMouseEnter={(e) => {
+        e.target.style.transform = 'scale(1.05) translateY(-2px)';
+        e.target.style.boxShadow = isPrimary
+          ? '0 12px 40px rgba(59, 130, 246, 0.2), 0 4px 16px rgba(59, 130, 246, 0.15)'
+          : '0 12px 40px rgba(0, 0, 0, 0.4), 0 4px 16px rgba(0, 0, 0, 0.3)';
+      }}
+      onMouseLeave={(e) => {
+        e.target.style.transform = 'scale(1) translateY(0)';
+        e.target.style.boxShadow = isPrimary
+          ? '0 8px 32px rgba(59, 130, 246, 0.15), 0 2px 8px rgba(59, 130, 246, 0.1)'
+          : '0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2)';
+      }}
     >
-      <span className="group-hover:scale-110 transition-transform">
+      <span className="group-hover:scale-110 transition-transform duration-300">
         {icon}
       </span>
-      {text}
+      <span 
+        className="transition-all duration-300"
+        style={{
+          background: isPrimary 
+            ? 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)'
+            : 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: isPrimary ? 'transparent' : 'rgba(255, 255, 255, 0.95)',
+          backgroundClip: 'text'
+        }}
+      >
+        {text}
+      </span>
     </a>
   );
 });
@@ -210,30 +279,125 @@ export default function Home() {
               </div>
               
               <div className="space-y-4">
-                <div className="text-center p-6 bg-white/90 backdrop-blur-sm rounded-xl border border-slate-200/60 shadow-md">
-                  <div className="text-3xl font-bold text-slate-800">€450M</div>
-                  <div className="text-sm text-slate-600 font-medium">Platform Value</div>
-                  <div className="text-xs text-slate-500">Vodeno BaaS</div>
+                <div 
+                  className="group text-center p-6 rounded-2xl border transition-all duration-300 hover:scale-[1.02] cursor-pointer"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255,255,255,0.2)',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05)',
+                  }}
+                >
+                  <div 
+                    className="text-3xl font-bold mb-2 transition-all duration-300 group-hover:scale-110"
+                    style={{
+                      background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text'
+                    }}
+                  >
+                    €450M
+                  </div>
+                  <div className="text-sm font-medium" style={{ color: 'rgba(30, 41, 59, 0.8)' }}>Platform Value</div>
+                  <div className="text-xs" style={{ color: 'rgba(30, 41, 59, 0.6)' }}>Vodeno BaaS</div>
                 </div>
-                <div className="text-center p-6 bg-white/90 backdrop-blur-sm rounded-xl border border-slate-200/60 shadow-md">
-                  <div className="text-3xl font-bold text-slate-800">$200K</div>
-                  <div className="text-sm text-slate-600 font-medium">Funding Raised</div>
-                  <div className="text-xs text-slate-500">0xKYC, Inc.</div>
+                <div 
+                  className="group text-center p-6 rounded-2xl border transition-all duration-300 hover:scale-[1.02] cursor-pointer"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255,255,255,0.2)',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05)',
+                  }}
+                >
+                  <div 
+                    className="text-3xl font-bold mb-2 transition-all duration-300 group-hover:scale-110"
+                    style={{
+                      background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text'
+                    }}
+                  >
+                    $200K
+                  </div>
+                  <div className="text-sm font-medium" style={{ color: 'rgba(30, 41, 59, 0.8)' }}>Funding Raised</div>
+                  <div className="text-xs" style={{ color: 'rgba(30, 41, 59, 0.6)' }}>0xKYC, Inc.</div>
                 </div>
-                <div className="text-center p-6 bg-white/90 backdrop-blur-sm rounded-xl border border-slate-200/60 shadow-md">
-                  <div className="text-3xl font-bold text-slate-800">10x</div>
-                  <div className="text-sm text-slate-600 font-medium">Growth Delivered</div>
-                  <div className="text-xs text-slate-500">Elympics Scale</div>
+                <div 
+                  className="group text-center p-6 rounded-2xl border transition-all duration-300 hover:scale-[1.02] cursor-pointer"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255,255,255,0.2)',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05)',
+                  }}
+                >
+                  <div 
+                    className="text-3xl font-bold mb-2 transition-all duration-300 group-hover:scale-110"
+                    style={{
+                      background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text'
+                    }}
+                  >
+                    10x
+                  </div>
+                  <div className="text-sm font-medium" style={{ color: 'rgba(30, 41, 59, 0.8)' }}>Growth Delivered</div>
+                  <div className="text-xs" style={{ color: 'rgba(30, 41, 59, 0.6)' }}>Elympics Scale</div>
                 </div>
-                <div className="text-center p-6 bg-white/90 backdrop-blur-sm rounded-xl border border-slate-200/60 shadow-md">
-                  <div className="text-3xl font-bold text-slate-800">$50M+</div>
-                  <div className="text-sm text-slate-600 font-medium">Monthly Transaction Volume</div>
-                  <div className="text-xs text-slate-500">Hinkal</div>
+                <div 
+                  className="group text-center p-6 rounded-2xl border transition-all duration-300 hover:scale-[1.02] cursor-pointer"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255,255,255,0.2)',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05)',
+                  }}
+                >
+                  <div 
+                    className="text-3xl font-bold mb-2 transition-all duration-300 group-hover:scale-110"
+                    style={{
+                      background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text'
+                    }}
+                  >
+                    $50M+
+                  </div>
+                  <div className="text-sm font-medium" style={{ color: 'rgba(30, 41, 59, 0.8)' }}>Monthly Transaction Volume</div>
+                  <div className="text-xs" style={{ color: 'rgba(30, 41, 59, 0.6)' }}>Hinkal</div>
                 </div>
-                <div className="text-center p-6 bg-white/90 backdrop-blur-sm rounded-xl border border-slate-200/60 shadow-md">
-                  <div className="text-3xl font-bold text-slate-800">3</div>
-                  <div className="text-sm text-slate-600 font-medium">Launchpads Managed</div>
-                  <div className="text-xs text-slate-500">SOL, BSC, TON</div>
+                <div 
+                  className="group text-center p-6 rounded-2xl border transition-all duration-300 hover:scale-[1.02] cursor-pointer"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255,255,255,0.2)',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05)',
+                  }}
+                >
+                  <div 
+                    className="text-3xl font-bold mb-2 transition-all duration-300 group-hover:scale-110"
+                    style={{
+                      background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text'
+                    }}
+                  >
+                    3
+                  </div>
+                  <div className="text-sm font-medium" style={{ color: 'rgba(30, 41, 59, 0.8)' }}>Launchpads Managed</div>
+                  <div className="text-xs" style={{ color: 'rgba(30, 41, 59, 0.6)' }}>SOL, BSC, TON</div>
                 </div>
               </div>
             </div>
