@@ -3,13 +3,18 @@
 import { useState, useEffect } from 'react';
 
 export default function SimpleCookieBanner() {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Smooth entrance animation
-    const timer = setTimeout(() => setIsVisible(true), 100);
-    return () => clearTimeout(timer);
+    // Only show banner if consent hasn't been given
+    const consent = localStorage.getItem('cookieConsent');
+    if (!consent) {
+      setShow(true);
+      // Smooth entrance animation
+      const timer = setTimeout(() => setIsVisible(true), 100);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   const handleAccept = () => {
@@ -80,7 +85,7 @@ export default function SimpleCookieBanner() {
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
             }}>
-              I use cookies
+              I love cookies
             </div>
             <div style={{ 
               fontSize: '13px',

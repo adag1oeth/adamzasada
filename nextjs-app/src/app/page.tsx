@@ -213,9 +213,15 @@ export default function Home() {
             </p>
             
             <div className="flex flex-wrap justify-center gap-6 pt-4">
-              <CompanyBadge color="bg-emerald-500" company="Soul Agents" detail="Live on Base" />
-              <CompanyBadge color="bg-blue-500" company="0xKYC" detail="$200K raised" />
-              <CompanyBadge color="bg-violet-500" company="Hinkal" detail="Product Lead" />
+              <a href="https://soulagents.io" target="_blank" rel="noopener noreferrer">
+                <CompanyBadge color="bg-emerald-500" company="Soul Agents" detail="Live on Base" />
+              </a>
+              <a href="https://0xkyc.id" target="_blank" rel="noopener noreferrer">
+                <CompanyBadge color="bg-blue-500" company="0xKYC" detail="$200K raised" />
+              </a>
+              <a href="https://hinkal.pro" target="_blank" rel="noopener noreferrer">
+                <CompanyBadge color="bg-violet-500" company="Hinkal" detail="Product Lead" />
+              </a>
             </div>
           </div>
         </div>
