@@ -551,7 +551,7 @@ export default function Home() {
                     <img 
                       src="/telegram.svg" 
                       alt="Telegram" 
-                      className="w-6 h-6"
+                      className="w-6 h-6 invert"
                     />
                   }
                   text="Telegram"
@@ -579,7 +579,7 @@ export default function Home() {
                     <img 
                       src="/farcaster.svg" 
                       alt="Farcaster" 
-                      className="w-6 h-6"
+                      className="w-6 h-6 invert"
                     />
                   }
                   text="Farcaster"
