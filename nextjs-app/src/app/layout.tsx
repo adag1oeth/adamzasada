@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Analytics } from '@vercel/analytics/next';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import CookieConsentBanner from '@/components/CookieConsent';
+import ConditionalAnalytics from '@/components/ConditionalAnalytics';
 import "./globals.css";
 
 const geistSans = Geist({
@@ -200,49 +200,11 @@ export default function RootLayout({
           {children}
         </main>
         
-        {/* Analytics - Vercel Analytics & Speed Insights */}
-        <Analytics />
-        <SpeedInsights />
+        {/* GDPR-Compliant Analytics - Only loads with consent */}
+        <ConditionalAnalytics />
         
-        {/* Google Analytics - Debug: GA_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} */}
-        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-          <>
-            <script 
-              async 
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
-            />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}');
-                `
-              }}
-            />
-          </>
-        )}
-        
-        {/* Fallback GA4 - Force load if env var issue */}
-        {!process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-          <>
-            <script 
-              async 
-              src="https://www.googletagmanager.com/gtag/js?id=G-Z63BS83V08"
-            />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', 'G-Z63BS83V08');
-                `
-              }}
-            />
-          </>
-        )}
+        {/* Cookie Consent Banner for EU Users */}
+        <CookieConsentBanner />
         
         {/* Skip to content link for accessibility */}
         <a 
