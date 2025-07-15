@@ -548,9 +548,11 @@ export default function Home() {
                 <ContactButton
                   href="https://t.me/adag1oeth"
                   icon={
-                    <img 
+                    <Image 
                       src="/telegram.svg" 
                       alt="Telegram" 
+                      width={24}
+                      height={24}
                       className="w-6 h-6 invert"
                     />
                   }
@@ -562,9 +564,11 @@ export default function Home() {
                 <ContactButton
                   href="https://x.com/adag1oeth"
                   icon={
-                    <img 
+                    <Image 
                       src="/x.svg" 
                       alt="X (Twitter)" 
+                      width={24}
+                      height={24}
                       className="w-6 h-6 invert"
                     />
                   }
@@ -576,9 +580,11 @@ export default function Home() {
                 <ContactButton
                   href="https://farcaster.xyz/adag1o.eth"
                   icon={
-                    <img 
+                    <Image 
                       src="/farcaster.svg" 
                       alt="Farcaster" 
+                      width={24}
+                      height={24}
                       className="w-6 h-6 invert"
                     />
                   }
