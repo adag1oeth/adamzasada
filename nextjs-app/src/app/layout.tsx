@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import "./globals.css";
 
 const geistSans = Geist({
@@ -197,6 +199,10 @@ export default function RootLayout({
         <main id="main-content" role="main">
           {children}
         </main>
+        
+        {/* Analytics - Vercel Analytics & Speed Insights */}
+        <Analytics />
+        <SpeedInsights />
         
         {/* Google Analytics - Only loads in production */}
         {process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
