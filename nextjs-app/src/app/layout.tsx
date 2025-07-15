@@ -204,7 +204,7 @@ export default function RootLayout({
         <Analytics />
         <SpeedInsights />
         
-        {/* Google Analytics */}
+        {/* Google Analytics - Debug: GA_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} */}
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <>
             <script 
@@ -218,6 +218,26 @@ export default function RootLayout({
                   function gtag(){dataLayer.push(arguments);}
                   gtag('js', new Date());
                   gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}');
+                `
+              }}
+            />
+          </>
+        )}
+        
+        {/* Fallback GA4 - Force load if env var issue */}
+        {!process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <>
+            <script 
+              async 
+              src="https://www.googletagmanager.com/gtag/js?id=G-Z63BS83V08"
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', 'G-Z63BS83V08');
                 `
               }}
             />
