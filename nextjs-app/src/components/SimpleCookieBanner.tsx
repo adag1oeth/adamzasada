@@ -94,7 +94,7 @@ export default function SimpleCookieBanner() {
               textShadow: '0 1px 2px rgba(255, 255, 255, 0.5)',
               fontWeight: '500'
             }}>
-              Analytics to improve your experience
+              Allow analytics to improve your experience.
             </div>
           </div>
         </div>
