@@ -1,9 +1,28 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function SimpleCookieBanner() {
   const [show, setShow] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Smooth entrance animation
+    const timer = setTimeout(() => setIsVisible(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleAccept = () => {
+    localStorage.setItem('cookieConsent', 'true');
+    setIsVisible(false);
+    setTimeout(() => setShow(false), 300);
+  };
+
+  const handleDecline = () => {
+    localStorage.setItem('cookieConsent', 'false');
+    setIsVisible(false);
+    setTimeout(() => setShow(false), 300);
+  };
 
   if (!show) return null;
 
@@ -11,68 +30,126 @@ export default function SimpleCookieBanner() {
     <div 
       style={{
         position: 'fixed',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        backgroundColor: '#1e293b',
-        color: 'white',
-        padding: '20px',
+        bottom: '24px',
+        left: '50%',
+        transform: `translateX(-50%) translateY(${isVisible ? '0' : '100px'})`,
+        width: '64%',
+        maxWidth: '800px',
+        minWidth: '320px',
+        background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        border: '1px solid rgba(255,255,255,0.15)',
+        borderRadius: '24px',
+        padding: '20px 24px',
         zIndex: 9999,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        boxShadow: '0 -4px 20px rgba(0, 0, 0, 0.3)',
-        fontSize: '14px',
-        fontFamily: 'system-ui, -apple-system, sans-serif'
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1)',
+        color: 'rgba(255, 255, 255, 0.95)',
+        fontFamily: 'var(--font-geist-sans), system-ui, -apple-system, sans-serif',
+        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+        opacity: isVisible ? 1 : 0,
       }}
     >
-      <div style={{ flex: 1, marginRight: '20px' }}>
-        <div style={{ fontWeight: 'bold', marginBottom: '8px' }}>
-          🍪 We use cookies and analytics
+      <div style={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'space-between',
+        gap: '20px',
+        flexWrap: 'wrap'
+      }}>
+        <div style={{ 
+          flex: 1, 
+          minWidth: '200px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '12px'
+        }}>
+          <div style={{ 
+            fontSize: '24px',
+            filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))'
+          }}>
+            🍪
+          </div>
+          <div>
+            <div style={{ 
+              fontWeight: '600', 
+              fontSize: '15px',
+              marginBottom: '4px',
+              background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>
+              We use cookies
+            </div>
+            <div style={{ 
+              fontSize: '13px',
+              color: 'rgba(255, 255, 255, 0.75)',
+              lineHeight: '1.4'
+            }}>
+              Analytics to improve your experience
+            </div>
+          </div>
         </div>
-        <div style={{ opacity: 0.9 }}>
-          This site uses Google Analytics and Vercel Analytics to improve user experience.
-        </div>
-      </div>
-      
-      <div style={{ display: 'flex', gap: '12px' }}>
-        <button
-          onClick={() => {
-            localStorage.setItem('cookieConsent', 'true');
-            setShow(false);
-          }}
-          style={{
-            backgroundColor: '#3b82f6',
-            color: 'white',
-            border: 'none',
-            padding: '12px 24px',
-            borderRadius: '8px',
-            cursor: 'pointer',
-            fontWeight: '600',
-            fontSize: '14px'
-          }}
-        >
-          Accept All
-        </button>
         
-        <button
-          onClick={() => {
-            localStorage.setItem('cookieConsent', 'false');
-            setShow(false);
-          }}
-          style={{
-            backgroundColor: 'rgba(255, 255, 255, 0.1)',
-            color: 'white',
-            border: '1px solid rgba(255, 255, 255, 0.2)',
-            padding: '12px 24px',
-            borderRadius: '8px',
-            cursor: 'pointer',
-            fontWeight: '500',
-            fontSize: '14px'
-          }}
-        >
-          Decline
-        </button>
+        <div style={{ 
+          display: 'flex', 
+          gap: '12px',
+          alignItems: 'center'
+        }}>
+          <button
+            onClick={handleDecline}
+            style={{
+              background: 'rgba(255, 255, 255, 0.1)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              color: 'rgba(255, 255, 255, 0.9)',
+              padding: '8px 16px',
+              borderRadius: '12px',
+              cursor: 'pointer',
+              fontWeight: '500',
+              fontSize: '13px',
+              transition: 'all 0.2s ease',
+              backdropFilter: 'blur(10px)',
+              WebkitBackdropFilter: 'blur(10px)',
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.background = 'rgba(255, 255, 255, 0.15)';
+              e.target.style.transform = 'translateY(-1px)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.background = 'rgba(255, 255, 255, 0.1)';
+              e.target.style.transform = 'translateY(0)';
+            }}
+          >
+            Decline
+          </button>
+          
+          <button
+            onClick={handleAccept}
+            style={{
+              background: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)',
+              border: 'none',
+              color: 'white',
+              padding: '8px 18px',
+              borderRadius: '12px',
+              cursor: 'pointer',
+              fontWeight: '600',
+              fontSize: '13px',
+              transition: 'all 0.2s ease',
+              boxShadow: '0 4px 12px rgba(59, 130, 246, 0.4)',
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.transform = 'translateY(-1px)';
+              e.target.style.boxShadow = '0 6px 16px rgba(59, 130, 246, 0.5)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = '0 4px 12px rgba(59, 130, 246, 0.4)';
+            }}
+          >
+            Accept
+          </button>
+        </div>
       </div>
     </div>
   );
