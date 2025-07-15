@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import CookieConsentBanner from '@/components/CookieConsent';
+import SimpleCookieBanner from '@/components/SimpleCookieBanner';
 import ConditionalAnalytics from '@/components/ConditionalAnalytics';
 import "./globals.css";
 
@@ -204,7 +204,7 @@ export default function RootLayout({
         <ConditionalAnalytics />
         
         {/* Cookie Consent Banner for EU Users */}
-        <CookieConsentBanner />
+        <SimpleCookieBanner />
         
         {/* Skip to content link for accessibility */}
         <a 
