@@ -7,11 +7,14 @@ export default function CookieConsentBanner() {
   const [showBanner, setShowBanner] = useState(false);
 
   useEffect(() => {
+    // Force show banner for testing - remove this later
+    setShowBanner(true);
+    
     // Only show banner if consent hasn't been given
-    const consent = localStorage.getItem('cookieConsent');
-    if (!consent) {
-      setShowBanner(true);
-    }
+    // const consent = localStorage.getItem('cookieConsent');
+    // if (!consent) {
+    //   setShowBanner(true);
+    // }
   }, []);
 
   const handleAccept = () => {
