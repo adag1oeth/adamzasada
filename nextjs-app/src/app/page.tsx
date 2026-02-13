@@ -218,7 +218,7 @@ export default function Home() {
                     Enterprise Ready
                   </h3>
                   <p className="text-slate-600 font-normal leading-relaxed">
-                    Banking-grade infrastructure. KYC systems across EU jurisdictions. SDK used by Request Finance, backed by Binance.
+                    Banking-grade infrastructure. KYC systems across global jurisdictions. SDK used by Request Finance, backed by Binance.
                   </p>
                 </div>
 

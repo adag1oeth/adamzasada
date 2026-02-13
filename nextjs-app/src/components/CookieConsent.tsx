@@ -8,7 +8,8 @@ export default function CookieConsentBanner() {
 
   useEffect(() => {
     // Force show banner for testing - remove this later
-    setShowBanner(true);
+    const timer = setTimeout(() => setShowBanner(true), 0);
+    return () => clearTimeout(timer);
     
     // Only show banner if consent hasn't been given
     // const consent = localStorage.getItem('cookieConsent');

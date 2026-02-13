@@ -10,10 +10,13 @@ export default function SimpleCookieBanner() {
     // Only show banner if consent hasn't been given
     const consent = localStorage.getItem('cookieConsent');
     if (!consent) {
-      setShow(true);
+      const showTimer = setTimeout(() => setShow(true), 0);
       // Smooth entrance animation
-      const timer = setTimeout(() => setIsVisible(true), 100);
-      return () => clearTimeout(timer);
+      const visibleTimer = setTimeout(() => setIsVisible(true), 100);
+      return () => {
+        clearTimeout(showTimer);
+        clearTimeout(visibleTimer);
+      };
     }
   }, []);
 
@@ -107,26 +110,29 @@ export default function SimpleCookieBanner() {
           <button
             onClick={handleDecline}
             style={{
-              background: 'rgba(255, 255, 255, 0.1)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              color: 'rgba(255, 255, 255, 0.9)',
+              background: 'rgba(30, 41, 59, 0.34)',
+              border: '1px solid rgba(255, 255, 255, 0.32)',
+              color: 'rgba(255, 255, 255, 0.96)',
               padding: '8px 16px',
               borderRadius: '12px',
               cursor: 'pointer',
-              fontWeight: '500',
+              fontWeight: '600',
               fontSize: '13px',
               transition: 'all 0.2s ease',
               backdropFilter: 'blur(10px)',
               WebkitBackdropFilter: 'blur(10px)',
+              boxShadow: '0 2px 8px rgba(15, 23, 42, 0.14)',
             }}
             onMouseEnter={(e) => {
               const target = e.currentTarget as HTMLButtonElement;
-              target.style.background = 'rgba(255, 255, 255, 0.15)';
+              target.style.background = 'rgba(30, 41, 59, 0.42)';
+              target.style.borderColor = 'rgba(255, 255, 255, 0.4)';
               target.style.transform = 'translateY(-1px)';
             }}
             onMouseLeave={(e) => {
               const target = e.currentTarget as HTMLButtonElement;
-              target.style.background = 'rgba(255, 255, 255, 0.1)';
+              target.style.background = 'rgba(30, 41, 59, 0.34)';
+              target.style.borderColor = 'rgba(255, 255, 255, 0.32)';
               target.style.transform = 'translateY(0)';
             }}
           >
