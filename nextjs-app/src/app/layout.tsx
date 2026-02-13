@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     default: "Adam Zasada | Senior Product Manager, Payments at Dropbox | Product Leader",
     template: "%s | Adam Zasada"
   },
-  description: "Senior Product Manager, Payments at Dropbox. Product leader who delivered core infrastructure for €450M-backed platform and raised $200K for zero-knowledge protocols. 8+ years building Web3 products at Vodeno, BabyDoge, and 0xKYC.",
+  description: "Product leader across payments, fintech, Web3, and AI. Senior Product Manager, Payments at Dropbox. Delivered core infrastructure for a €450M platform and drove $50M in monthly transaction volume.",
   keywords: [
     "Product Leadership",
     "Banking Infrastructure", 
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "profile",
     title: "Adam Zasada | Senior Product Manager, Payments at Dropbox | Product Leader",
-    description: "Senior Product Manager, Payments at Dropbox. Builder of €450M banking platforms and zero-knowledge protocols. Led product teams at Vodeno and founded 0xKYC ($200K raised from Outlier Ventures).",
+    description: "Product leader across payments, fintech, Web3, and AI. Senior Product Manager, Payments at Dropbox. Delivered core infrastructure for a €450M platform and drove $50M in monthly transaction volume.",
     url: "https://adamzasada.com",
     siteName: "Adam Zasada Portfolio",
     locale: "en_US",
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     site: "@adag1oeth",
     creator: "@adag1oeth",
     title: "Adam Zasada | Senior Product Manager, Payments at Dropbox | Product Leader",
-    description: "Senior Product Manager, Payments at Dropbox. Product leader who delivered core infrastructure for €450M-backed platform and raised $200K for zero-knowledge protocols.",
+    description: "Product leader across payments, fintech, Web3, and AI. Senior Product Manager, Payments at Dropbox. Delivered core infrastructure for a €450M platform and drove $50M in monthly transaction volume.",
     images: {
       url: "/adag1o.jpg",
       alt: "Adam Zasada - Product Leader and Banking Infrastructure Architect",
@@ -128,7 +128,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         
         {/* DNS prefetch for external resources */}
-        <link rel="dns-prefetch" href="//soundcloud.com" />
+        <link rel="dns-prefetch" href="//open.spotify.com" />
         <link rel="dns-prefetch" href="//twitter.com" />
         <link rel="dns-prefetch" href="//telegram.org" />
         
@@ -151,14 +151,14 @@ export default function RootLayout({
               "@type": "Person",
               "name": "Adam Zasada",
               "jobTitle": "Senior Product Manager, Payments at Dropbox",
-              "description": "Senior Product Manager, Payments at Dropbox. Builder of €450M banking platforms and zero-knowledge protocols.",
+              "description": "Product leader across payments, fintech, Web3, and AI. Senior Product Manager, Payments at Dropbox. Delivered core infrastructure for a €450M platform and drove $50M in monthly transaction volume.",
               "url": "https://adamzasada.com",
               "image": "https://adamzasada.com/adag1o.jpg",
               "sameAs": [
                 "https://twitter.com/adag1oeth",
                 "https://linkedin.com/in/adag1oeth",
                 "https://github.com/adag1oeth",
-                "https://soundcloud.com/adamrulesmusic"
+                "https://open.spotify.com/artist/5vkTq36ZbhBhO2BAhnH01E"
               ],
               "address": {
                 "@type": "PostalAddress",
@@ -174,11 +174,6 @@ export default function RootLayout({
                   "@type": "Organization",
                   "name": "Dropbox",
                   "url": "https://dropbox.com"
-                },
-                {
-                  "@type": "Organization",
-                  "name": "Soul Agents",
-                  "url": "https://soulagents.io"
                 }
               ],
               "foundedOrganization": [
@@ -186,11 +181,6 @@ export default function RootLayout({
                   "@type": "Organization",
                   "name": "0xKYC",
                   "url": "https://0xkyc.id"
-                },
-                {
-                  "@type": "Organization", 
-                  "name": "Soul Agents",
-                  "url": "https://soulagents.io"
                 }
               ]
             })

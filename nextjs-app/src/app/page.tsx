@@ -334,10 +334,10 @@ export default function Home() {
               icon="DB"
               title="Dropbox"
               role="Senior Product Manager, Payments"
-            description="Payments product strategy and execution for a global SaaS platform, focused on global payment routing, fraud prevention, and incredible user experience."
-            colorClasses="bg-white border-slate-200/80"
-            variant="featured"
-          />
+            description="Payments product strategy and execution for a global SaaS platform, focused on global payment routing, fraud prevention, and user experience."
+              colorClasses="bg-white border-slate-200/80"
+              variant="featured"
+            />
 
             <ExperienceCard
               href="https://0xkyc.id"
