@@ -22,51 +22,17 @@ const ProfileImage = memo(function ProfileImage() {
   );
 });
 
-const CompanyBadge = memo(function CompanyBadge({ 
-  color, 
-  company, 
-  detail 
-}: { 
-  color: string; 
-  company: string; 
-  detail: string; 
+const SectionIcon = memo(function SectionIcon({
+  label,
+  colorClass,
+}: {
+  label: string;
+  colorClass: string;
 }) {
   return (
-    <span 
-      className="group flex items-center gap-3 text-sm font-medium px-6 py-3 rounded-2xl border transition-all duration-300 hover:scale-[1.02] cursor-pointer"
-      style={{
-        background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        border: '1px solid rgba(255,255,255,0.2)',
-        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05)',
-      }}
-    >
-      <span 
-        className={`w-3 h-3 ${color} rounded-full transition-all duration-300 group-hover:scale-110`}
-        style={{
-          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)',
-        }}
-      ></span>
-      <span 
-        className="font-semibold transition-all duration-300"
-        style={{
-          color: 'rgba(30, 41, 59, 0.95)',
-          fontWeight: '700'
-        }}
-      >
-        {company}
-      </span>
-      <span 
-        className="transition-all duration-300"
-        style={{
-          color: 'rgba(30, 41, 59, 0.7)',
-          fontWeight: '500'
-        }}
-      >
-        ({detail})
-      </span>
-    </span>
+    <div className={`w-10 h-10 ${colorClass} rounded-lg flex items-center justify-center text-white text-xs font-semibold tracking-wide shadow-sm`}>
+      {label}
+    </div>
   );
 });
 
@@ -76,7 +42,8 @@ const ExperienceCard = memo(function ExperienceCard({
   title,
   role,
   description,
-  colorClasses
+  colorClasses,
+  variant = 'standard',
 }: {
   href?: string;
   icon: string;
@@ -84,19 +51,30 @@ const ExperienceCard = memo(function ExperienceCard({
   role: string;
   description: string | React.ReactNode;
   colorClasses: string;
+  variant?: 'featured' | 'standard';
 }) {
+  const isFeatured = variant === 'featured';
+
   const CardContent = (
-    <div className={`group block ${colorClasses} rounded-xl p-6 border shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2`}>
+    <div
+      className={`group block ${colorClasses} rounded-xl border transition-all duration-300 hover:scale-[1.01] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 h-full ${
+        isFeatured
+          ? 'p-5 shadow-xl hover:shadow-2xl min-h-[240px]'
+          : 'p-5 shadow-md hover:shadow-lg min-h-[220px]'
+      }`}
+    >
       <div className="flex items-center gap-3 mb-3">
-        <div className="w-12 h-12 bg-gradient-to-br from-slate-600 to-slate-700 rounded-xl flex items-center justify-center text-white text-xl shadow-lg group-hover:shadow-xl transition-shadow">
+        <div className="w-11 h-11 bg-gradient-to-br from-slate-700 to-slate-900 rounded-full flex items-center justify-center text-white text-sm font-semibold tracking-wide shadow-md group-hover:shadow-lg transition-shadow">
           {icon}
         </div>
         <div>
-          <h3 className="font-bold text-slate-900 group-hover:text-black transition-colors">{title}</h3>
+          <h3 className={`font-bold transition-colors ${isFeatured ? 'text-slate-950' : 'text-slate-900'} group-hover:text-black`}>
+            {title}
+          </h3>
           <p className="text-sm text-slate-800 font-medium">{role}</p>
         </div>
       </div>
-      <div className="text-sm text-slate-800 leading-relaxed font-medium">{description}</div>
+      <div className="text-sm text-slate-800 leading-relaxed font-medium max-w-[38ch]">{description}</div>
     </div>
   );
 
@@ -187,12 +165,7 @@ const ContactButton = memo(function ContactButton({
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-100 via-white to-orange-100">
-      {/* Sophisticated background elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-slate-600/30 to-gray-800/30 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-slate-700/30 to-gray-900/30 rounded-full blur-3xl"></div>
-      </div>
+    <div className="min-h-screen bg-white">
 
       {/* Header Section */}
       <header className="relative z-10 max-w-6xl mx-auto px-6 pt-12 pb-6">
@@ -206,20 +179,8 @@ export default function Home() {
               Adam Zasada
             </h1>
             <h2 className="text-xl md:text-2xl text-slate-700 font-medium mb-6 tracking-wide">
-              Product Leader, Founder & GTM Advisor
+              Product Leader | Senior PM, Payments at Dropbox
             </h2>
-            <p className="text-sm text-slate-500 max-w-2xl mx-auto mt-3 italic font-light">
-            Some teams set the pace. I set new standards.
-            </p>
-            
-            <div className="flex flex-wrap justify-center gap-6 pt-4">
-              <a href="https://soulagents.io" target="_blank" rel="noopener noreferrer">
-                <CompanyBadge color="bg-emerald-500" company="Soul Agents" detail="Live on Base" />
-              </a>
-              <a href="https://0xkyc.id" target="_blank" rel="noopener noreferrer">
-                <CompanyBadge color="bg-blue-500" company="0xKYC" detail="$200K raised" />
-              </a>
-            </div>
           </div>
         </div>
       </header>
@@ -232,30 +193,28 @@ export default function Home() {
               <h2 id="about-heading" className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
                 Track Record
               </h2>
-              <p className="text-xl text-slate-700 max-w-3xl mx-auto leading-relaxed font-medium">
-                LSE graduate and builder with 8+ years across Web3 products, leadership, and GTM. Delivered core infrastructure for €450M-backed platform, raised $200K from top VCs, scaled teams of 10+. $50M+ monthly private transaction volume at Hinkal.
-              </p>
+              <div className="text-xl text-slate-700 max-w-3xl mx-auto leading-relaxed font-medium space-y-2">
+                <p>Product leader across payments, fintech, Web3, and AI. Proven execution at scale.</p>
+                <p>Delivered core infrastructure for a €450M platform.</p>
+                <p>Drove $50M in monthly transaction volume at Hinkal.</p>
+              </div>
             </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
               <div className="lg:col-span-2 space-y-8 text-slate-800 text-lg leading-relaxed">
                 <div className="bg-gradient-to-br from-slate-50 to-gray-100 rounded-xl p-6 border border-slate-200/50 shadow-sm">
                   <h3 className="text-xl font-semibold text-slate-800 mb-3 flex items-center gap-3">
-                    <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
-                      <span className="text-white text-lg">🚀</span>
-                    </div>
-                    Zero → Scale
+                    <SectionIcon label="ZS" colorClass="bg-blue-500" />
+                    Zero to Scale
                   </h3>
                   <p className="text-slate-600 font-normal leading-relaxed">
-                    Co-founded 0xKYC: $200K raised from Outlier Ventures, BuffiCorn Ventures, Celestia&apos;s CTO and other angels. Delivered core infrastructure for Vodeno&apos;s €450M-backed platform.
+                    Co-founded 0xKYC. Built and shipped zero-knowledge identity infrastructure.
                   </p>
                 </div>
                 
                 <div className="bg-gradient-to-br from-slate-50 to-gray-100 rounded-xl p-6 border border-slate-200/50 shadow-sm">
                   <h3 className="text-xl font-semibold text-slate-800 mb-3 flex items-center gap-3">
-                    <div className="w-10 h-10 bg-emerald-500 rounded-lg flex items-center justify-center">
-                      <span className="text-white text-lg">💼</span>
-                    </div>
+                    <SectionIcon label="ER" colorClass="bg-emerald-500" />
                     Enterprise Ready
                   </h3>
                   <p className="text-slate-600 font-normal leading-relaxed">
@@ -266,17 +225,12 @@ export default function Home() {
                 <div className="space-y-4 pt-6">
                   <div className="bg-gradient-to-br from-slate-50 to-gray-100 rounded-xl p-6 border border-slate-200/50 shadow-sm">
                     <h3 className="text-xl font-semibold text-slate-800 mb-3 flex items-center gap-3">
-                      <div className="w-10 h-10 bg-violet-500 rounded-lg flex items-center justify-center">
-                        <span className="text-white text-lg">🎯</span>
-                      </div>
+                      <SectionIcon label="ML" colorClass="bg-violet-500" />
                       Market Leadership
                     </h3>
                     <p className="text-slate-600 font-normal leading-relaxed">
-                      Scaled Elympics 300 → 10k users. Led product at BabyDoge across Solana, BSC, TON. Built relationships with top KOLs.
+                      Scaled Elympics from 300 to 10,000 users. Led product at BabyDoge across Solana, BSC, and TON.
                     </p>
-                  </div>
-                  <div className="text-sm text-slate-600 italic border-l-4 border-slate-300 pl-4 mt-8">
-                    <strong>Plus:</strong> <a href="https://soundcloud.com/adamrulesmusic" target="_blank" rel="noopener noreferrer" className="text-slate-700 hover:text-slate-900 underline transition-colors font-medium">Music producer turned product leader</a> (Burn Residency winner 2012, shared stage with Solomun, Sven Väth, and Adam Port).
                   </div>
                 </div>
               </div>
@@ -303,8 +257,8 @@ export default function Home() {
                   >
                     €450M
                   </div>
-                  <div className="text-sm font-medium" style={{ color: 'rgba(30, 41, 59, 0.8)' }}>Platform Value</div>
-                  <div className="text-xs" style={{ color: 'rgba(30, 41, 59, 0.6)' }}>Vodeno BaaS</div>
+                  <div className="text-sm font-medium" style={{ color: 'rgba(30, 41, 59, 0.8)' }}>€450M BaaS Platform</div>
+                  <div className="text-xs" style={{ color: 'rgba(30, 41, 59, 0.6)' }}>Vodeno</div>
                 </div>
                 <div 
                   className="group text-center p-6 rounded-2xl border transition-all duration-300 hover:scale-[1.02] cursor-pointer"
@@ -325,57 +279,9 @@ export default function Home() {
                       backgroundClip: 'text'
                     }}
                   >
-                    $200K
+                    $50M
                   </div>
-                  <div className="text-sm font-medium" style={{ color: 'rgba(30, 41, 59, 0.8)' }}>Funding Raised</div>
-                  <div className="text-xs" style={{ color: 'rgba(30, 41, 59, 0.6)' }}>0xKYC, Inc.</div>
-                </div>
-                <div 
-                  className="group text-center p-6 rounded-2xl border transition-all duration-300 hover:scale-[1.02] cursor-pointer"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)',
-                    backdropFilter: 'blur(20px)',
-                    WebkitBackdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255,255,255,0.2)',
-                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05)',
-                  }}
-                >
-                  <div 
-                    className="text-3xl font-bold mb-2 transition-all duration-300 group-hover:scale-110"
-                    style={{
-                      background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text'
-                    }}
-                  >
-                    10x
-                  </div>
-                  <div className="text-sm font-medium" style={{ color: 'rgba(30, 41, 59, 0.8)' }}>Growth Delivered</div>
-                  <div className="text-xs" style={{ color: 'rgba(30, 41, 59, 0.6)' }}>Elympics Scale</div>
-                </div>
-                <div 
-                  className="group text-center p-6 rounded-2xl border transition-all duration-300 hover:scale-[1.02] cursor-pointer"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)',
-                    backdropFilter: 'blur(20px)',
-                    WebkitBackdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255,255,255,0.2)',
-                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05)',
-                  }}
-                >
-                  <div 
-                    className="text-3xl font-bold mb-2 transition-all duration-300 group-hover:scale-110"
-                    style={{
-                      background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text'
-                    }}
-                  >
-                    $50M+
-                  </div>
-                  <div className="text-sm font-medium" style={{ color: 'rgba(30, 41, 59, 0.8)' }}>Monthly Transaction Volume</div>
+                  <div className="text-sm font-medium" style={{ color: 'rgba(30, 41, 59, 0.8)' }}>$50M Monthly Volume</div>
                   <div className="text-xs" style={{ color: 'rgba(30, 41, 59, 0.6)' }}>Hinkal</div>
                 </div>
                 <div 
@@ -399,7 +305,7 @@ export default function Home() {
                   >
                     3
                   </div>
-                  <div className="text-sm font-medium" style={{ color: 'rgba(30, 41, 59, 0.8)' }}>Launchpads Managed</div>
+                  <div className="text-sm font-medium" style={{ color: 'rgba(30, 41, 59, 0.8)' }}>Launchpads</div>
                   <div className="text-xs" style={{ color: 'rgba(30, 41, 59, 0.6)' }}>SOL, BSC, TON</div>
                 </div>
               </div>
@@ -408,6 +314,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Experience Divider */}
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="h-px bg-slate-200/90" />
+      </div>
+
       {/* Experience Highlights */}
       <section className="relative z-10 max-w-6xl mx-auto px-6 py-12" aria-labelledby="experience-heading">
         <div className="text-center mb-8">
@@ -415,61 +326,87 @@ export default function Home() {
             Experience
           </h2>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <ExperienceCard
-            href="https://0xkyc.id"
-            icon="🔐"
-            title="0xKYC"
-            role="CEO & Co-Founder"
-            description="Zero-knowledge identity protocol. Led team of 10+ (7 full-time), raised $200K from Outlier Ventures, BuffiCorn Ventures, Celestia's CTO and other angels. Partnered with Onfido."
-            colorClasses="bg-white/80 backdrop-blur-sm border-slate-200/60 shadow-md hover:shadow-lg"
+
+        <div className="space-y-5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <ExperienceCard
+              href="https://dropbox.com"
+              icon="DB"
+              title="Dropbox"
+              role="Senior Product Manager, Payments"
+            description="Payments product strategy and execution for a global SaaS platform, focused on global payment routing, fraud prevention, and incredible user experience."
+            colorClasses="bg-white border-slate-200/80"
+            variant="featured"
           />
-          
-          <ExperienceCard
-            href="https://hinkal.pro"
-            icon="🔒"
-            title="Hinkal"
-            role="Ecosystem & Product Lead"
-            description="Privacy SDK, used by Request Finance, powering over $50M in monthly transaction volume. Worked with DeFi industry leaders. Backed by Binance and Draper Associates."
-            colorClasses="bg-white/80 backdrop-blur-sm border-slate-200/60 shadow-md hover:shadow-lg"
-          />
-          
-          <ExperienceCard
-            href="https://soulagents.io"
-            icon="🤖"
-            title="Soul Agents"
-            role="Founder"
-            description={<>AI brand agents on Base with early paying users. Leading product, GTM, and coding. Solo-built trading feature that placed third at Brian AI Hackathon. Try it out at <span className="text-purple-600 font-semibold">soulagents.io</span></>}
-            colorClasses="bg-white/80 backdrop-blur-sm border-slate-200/60 shadow-md hover:shadow-lg"
-          />
-          
-          <ExperienceCard
-            href="https://vodeno.com"
-            icon="🏦"
-            title="Vodeno"
-            role="Product Owner"
-            description="Delivered core infrastructure for €450M-backed platform powering Aion Bank and Revolut. Led cross-functional teams of 10+ engineers."
-            colorClasses="bg-white/80 backdrop-blur-sm border-slate-200/60 shadow-md hover:shadow-lg"
-          />
-          
-          <ExperienceCard
-            href="https://babydoge.com"
-            icon="🐶"
-            title="BabyDoge"
-            role="Product Lead"
-            description="Led product and GTM for Solana, BSC, and TON token launchpads. Built AI agents for chat and trading interfaces with weekly releases."
-            colorClasses="bg-white/80 backdrop-blur-sm border-slate-200/60 shadow-md hover:shadow-lg"
-          />
-          
-          <ExperienceCard
-            href="https://elympics.ai"
-            icon="🎮"
-            title="Elympics"
-            role="Associate to CEO"
-            description="Scaled community 300 → 10k users and increased daily gameplay to 4k+. Built strategic partnerships with leading Web3 brands."
-            colorClasses="bg-white/80 backdrop-blur-sm border-slate-200/60 shadow-md hover:shadow-lg"
-          />
+
+            <ExperienceCard
+              href="https://0xkyc.id"
+              icon="0x"
+              title="0xKYC"
+              role="CEO & Co-Founder"
+              description="Zero-knowledge identity protocol. Led a 10-person team (7 full-time), raised $200K from Outlier Ventures, BuffiCorn Ventures, Celestia's CTO, and angels. Partnered with Onfido."
+              colorClasses="bg-white border-slate-200/80"
+              variant="featured"
+            />
+
+            <ExperienceCard
+              href="https://hinkal.pro"
+              icon="HK"
+              title="Hinkal"
+              role="Ecosystem & Product Lead"
+              description="Privacy SDK, used by Request Finance, powering $50M in monthly transaction volume. Worked with DeFi industry leaders. Backed by Binance and Draper Associates."
+              colorClasses="bg-white border-slate-200/80"
+              variant="featured"
+            />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <ExperienceCard
+              href="https://vodeno.com"
+              icon="VD"
+              title="Vodeno"
+              role="Product Owner"
+              description="Delivered core infrastructure for a €450M platform powering UniCredit and Revolut. Led cross-functional teams of 10 engineers."
+              colorClasses="bg-slate-50/70 border-slate-200/80"
+            />
+
+            <ExperienceCard
+              href="https://bitwala.com"
+              icon="NB"
+              title="Nuri (now Bitwala)"
+              role="Product Manager, Platform (crypto banking & payments)"
+              description="Led backend product development for cards, payments, and core banking systems at a regulated crypto bank. Contributed to implementation of KYC flows. Drove product strategy for a regulated fintech."
+              colorClasses="bg-slate-50/70 border-slate-200/80"
+            />
+
+            <ExperienceCard
+              icon="SA"
+              title="Soul Agents"
+              role="Founder"
+              description="Built an AI brand agents product on Base. Led product, GTM, and engineering. Solo-built a trading feature that placed third at Brian AI Hackathon."
+              colorClasses="bg-slate-50/70 border-slate-200/80"
+            />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:max-w-4xl md:mx-auto">
+            <ExperienceCard
+              href="https://babydoge.com"
+              icon="BD"
+              title="BabyDoge"
+              role="Product Lead"
+              description="Led product and GTM for Solana, BSC, and TON token launchpads. Built AI agents for chat and trading interfaces with weekly releases."
+              colorClasses="bg-slate-50/70 border-slate-200/80"
+            />
+
+            <ExperienceCard
+              href="https://elympics.ai"
+              icon="EL"
+              title="Elympics"
+              role="Associate to CEO"
+              description="Scaled community from 300 to 10,000 users and increased daily gameplay to 20,000. Built strategic partnerships with leading Web3 brands."
+              colorClasses="bg-slate-50/70 border-slate-200/80"
+            />
+          </div>
         </div>
       </section>
 
@@ -480,50 +417,43 @@ export default function Home() {
             Value Proposition
           </h2>
           <p className="text-xl text-slate-700 max-w-3xl mx-auto font-medium leading-relaxed">
-            I define new categories and lead teams who build, launch, and scale.
+            I define categories and lead teams that build and scale.
           </p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="bg-white/90 backdrop-blur-sm rounded-xl p-8 shadow-md border border-slate-200/60">
             <h3 className="text-xl font-semibold text-slate-800 mb-6 flex items-center gap-3">
-              <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center text-white text-xl shadow-sm">
-                🎯
-              </div>
+              <SectionIcon label="PR" colorClass="bg-blue-500" />
               Proven Results
             </h3>
             <ul className="space-y-3 text-slate-600 text-sm leading-relaxed">
-              <li><strong className="text-slate-800">Scale:</strong> €450M platform, 10+ team leadership</li>
-              <li><strong className="text-slate-800">Funding:</strong> $200K raised from Outlier Ventures, BuffiCorn Ventures, Celestia&apos;s CTO and other angels</li>
-              <li><strong className="text-slate-800">Growth:</strong> 300 → 10k user community scaling, 20+ events including ETHWarsaw closing event, and major events for 1k+ people. Digital communities across Discord, X, Telegram, TikTok, and Instagram</li>
+              <li><strong className="text-slate-800">Scale:</strong> €450M platform, led 10-person cross-functional teams</li>
+              <li><strong className="text-slate-800">Growth:</strong> Produced large-scale events (1,000+ attendees) and built multi-platform digital communities.</li>
             </ul>
           </div>
 
           <div className="bg-white/90 backdrop-blur-sm rounded-xl p-8 shadow-md border border-slate-200/60">
             <h3 className="text-xl font-semibold text-slate-800 mb-6 flex items-center gap-3">
-              <div className="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center text-white text-xl shadow-sm">
-                ⚡
-              </div>
+              <SectionIcon label="ER" colorClass="bg-emerald-500" />
               Enterprise Ready
             </h3>
             <ul className="space-y-3 text-slate-600 text-sm leading-relaxed">
-              <li><strong className="text-slate-800">Banking:</strong> EU-compliant KYC, SEPA flows</li>
-              <li><strong className="text-slate-800">Web3:</strong> Zero-knowledge protocols, DeFi SDKs, token launchpads, AI agents, privacy infrastructure, NFTs, Web3 Gaming</li>
-              <li><strong className="text-slate-800">AI:</strong> AI-enabled apps and dApps, trading AI, AI automation, and AI-powered infrastructure</li>
+              <li><strong className="text-slate-800">Banking:</strong> KYC, SEPA, payments, cards</li>
+              <li><strong className="text-slate-800">Web3:</strong> ZK identity, DeFi SDKs, launchpads, AI agents, privacy infrastructure</li>
+              <li><strong className="text-slate-800">AI:</strong> AI-enabled apps and dApps, automation systems, and applied AI infrastructure.</li>
             </ul>
           </div>
 
           <div className="bg-white/90 backdrop-blur-sm rounded-xl p-8 shadow-md border border-slate-200/60">
             <h3 className="text-xl font-semibold text-slate-800 mb-6 flex items-center gap-3">
-              <div className="w-12 h-12 bg-violet-500 rounded-xl flex items-center justify-center text-white text-xl shadow-sm">
-                💎
-              </div>
+              <SectionIcon label="MP" colorClass="bg-violet-500" />
               Market Position
             </h3>
             <ul className="space-y-3 text-slate-600 text-sm leading-relaxed">
-              <li><strong className="text-slate-800">Leadership:</strong> When I lead, the market follows. Event organization with people management skills and an artistic touch</li>
-              <li><strong className="text-slate-800">Innovation:</strong> First principles thinking</li>
-              <li><strong className="text-slate-800">Execution:</strong> Zero to scale, paying users from day one, weekly releases, third place at Brian AI Hackathon, consistently delivered</li>
+              <li><strong className="text-slate-800">Leadership:</strong> Built and led cross-functional teams across Web3 and fintech</li>
+              <li><strong className="text-slate-800">Innovation:</strong> First-principles product design</li>
+              <li><strong className="text-slate-800">Execution:</strong> From zero to paying users. Weekly releases. Disciplined execution.</li>
             </ul>
           </div>
         </div>
@@ -532,9 +462,9 @@ export default function Home() {
       {/* Contact Section */}
       <section className="relative z-10 max-w-5xl mx-auto px-6 py-12" aria-labelledby="contact-heading">
         <div className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-700 via-blue-700 to-indigo-700 rounded-3xl blur-xl opacity-75"></div>
-          <div className="relative bg-gradient-to-r from-slate-700 via-blue-700 to-indigo-700 rounded-3xl p-8 md:p-12 text-center text-white shadow-2xl border border-slate-200/20">
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-slate-700/90 via-blue-700/90 to-indigo-700/90 backdrop-blur-sm"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-600 via-slate-700 to-blue-700 rounded-3xl blur-xl opacity-55"></div>
+          <div className="relative bg-gradient-to-r from-slate-600 via-slate-700 to-blue-700 rounded-3xl p-8 md:p-12 text-center text-white shadow-xl border border-slate-200/20">
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-slate-700/82 via-slate-700/82 to-blue-700/82 backdrop-blur-sm"></div>
             
             <div className="relative z-10">
               <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold mb-6">
@@ -626,7 +556,10 @@ export default function Home() {
       {/* Footer */}
       <footer className="relative z-10 text-center py-8 text-slate-800" role="contentinfo">
         <p className="text-base font-medium text-slate-600">
-          © 2025 Adam Zasada. Product Leader & Founder.
+          © 2026 Adam Zasada. Product Leader & Founder.
+        </p>
+        <p className="text-sm text-slate-500 mt-2">
+          Music producer — <a href="https://open.spotify.com/artist/5vkTq36ZbhBhO2BAhnH01E" target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-700 transition-colors">listen on Spotify</a>
         </p>
       </footer>
     </div>

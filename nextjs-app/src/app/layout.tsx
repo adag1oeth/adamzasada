@@ -17,10 +17,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://adamzasada.com'),
   title: {
-    default: "Adam Zasada | Product Leader, Founder & GTM Advisor | Web3 Infrastructure",
+    default: "Adam Zasada | Senior Product Manager, Payments at Dropbox | Product Leader",
     template: "%s | Adam Zasada"
   },
-  description: "Product leader who delivered core infrastructure for €450M-backed platform and raised $200K for zero-knowledge protocols. 8+ years building Web3 products at Vodeno, BabyDoge, 0xKYC. Warsaw-based.",
+  description: "Senior Product Manager, Payments at Dropbox. Product leader who delivered core infrastructure for €450M-backed platform and raised $200K for zero-knowledge protocols. 8+ years building Web3 products at Vodeno, BabyDoge, and 0xKYC.",
   keywords: [
     "Product Leadership",
     "Banking Infrastructure", 
@@ -53,8 +53,8 @@ export const metadata: Metadata = {
   classification: "Business",
   openGraph: {
     type: "profile",
-    title: "Adam Zasada | Product Leader, Founder & GTM Advisor | Web3 Infrastructure",
-    description: "Builder of €450M banking platforms and zero-knowledge protocols. Led product teams at Vodeno, Bitwala, and founded 0xKYC ($200K raised from Outlier Ventures).",
+    title: "Adam Zasada | Senior Product Manager, Payments at Dropbox | Product Leader",
+    description: "Senior Product Manager, Payments at Dropbox. Builder of €450M banking platforms and zero-knowledge protocols. Led product teams at Vodeno and founded 0xKYC ($200K raised from Outlier Ventures).",
     url: "https://adamzasada.com",
     siteName: "Adam Zasada Portfolio",
     locale: "en_US",
@@ -72,8 +72,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@adag1oeth",
     creator: "@adag1oeth",
-    title: "Adam Zasada | Product Leader, Founder & GTM Advisor | Web3 Infrastructure",
-    description: "Product leader who delivered core infrastructure for €450M-backed platform and raised $200K for zero-knowledge protocols. Warsaw-based Web3 product expert.",
+    title: "Adam Zasada | Senior Product Manager, Payments at Dropbox | Product Leader",
+    description: "Senior Product Manager, Payments at Dropbox. Product leader who delivered core infrastructure for €450M-backed platform and raised $200K for zero-knowledge protocols.",
     images: {
       url: "/adag1o.jpg",
       alt: "Adam Zasada - Product Leader and Banking Infrastructure Architect",
@@ -150,8 +150,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "Adam Zasada",
-              "jobTitle": "Product Leader, Founder & GTM Advisor",
-              "description": "Builder of €450M banking platforms and zero-knowledge protocols",
+              "jobTitle": "Senior Product Manager, Payments at Dropbox",
+              "description": "Senior Product Manager, Payments at Dropbox. Builder of €450M banking platforms and zero-knowledge protocols.",
               "url": "https://adamzasada.com",
               "image": "https://adamzasada.com/adag1o.jpg",
               "sameAs": [
@@ -170,6 +170,11 @@ export default function RootLayout({
                 "name": "London School of Economics"
               },
               "worksFor": [
+                {
+                  "@type": "Organization",
+                  "name": "Dropbox",
+                  "url": "https://dropbox.com"
+                },
                 {
                   "@type": "Organization",
                   "name": "Soul Agents",
