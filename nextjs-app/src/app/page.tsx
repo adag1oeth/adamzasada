@@ -416,9 +416,6 @@ export default function Home() {
           <h2 id="collaboration-heading" className="text-4xl font-bold text-slate-900 mb-4 tracking-tight">
             Value Proposition
           </h2>
-          <p className="text-xl text-slate-700 max-w-3xl mx-auto font-medium leading-relaxed">
-            I define categories and lead teams that build and scale.
-          </p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -471,7 +468,7 @@ export default function Home() {
                 Ready to build something that matters?
               </h2>
               <p className="text-xl mb-8 text-blue-100 max-w-3xl mx-auto leading-relaxed font-medium">
-                Let&apos;s move from vision to execution. Fast.
+                Let&apos;s move from vision to execution.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
