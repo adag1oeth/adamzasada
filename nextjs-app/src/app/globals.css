@@ -369,8 +369,16 @@ a {
 }
 
 .experience-grid--standard {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   margin-top: 1.2rem;
+}
+
+.experience-grid--standard .experience-card {
+  grid-column: span 2;
+}
+
+.experience-grid--standard .experience-card:nth-last-child(-n + 2) {
+  grid-column: span 3;
 }
 
 .experience-card {
@@ -793,6 +801,14 @@ a {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .experience-grid--standard .experience-card {
+    grid-column: auto;
+  }
+
+  .experience-grid--standard .experience-card:last-child {
+    grid-column: 1 / -1;
+  }
+
   .music-section__grid {
     gap: 3.5rem;
   }
@@ -872,6 +888,10 @@ a {
   .experience-grid--featured,
   .experience-grid--standard {
     grid-template-columns: 1fr;
+  }
+
+  .experience-grid--standard .experience-card:last-child {
+    grid-column: auto;
   }
 
   .experience-card,
