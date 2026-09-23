@@ -29,7 +29,8 @@ const experiences: Experience[] = [
     description:
       'Built and deployed zero-knowledge identity infrastructure through a dApp, API, and Discord bot. Led a 10-person team, raised $200K, and partnered with Onfido.',
     mark: '0x',
-    href: 'https://0xkyc.id',
+    href: 'https://github.com/0xkyc',
+    linkLabel: 'View open source',
     featured: true,
   },
   {

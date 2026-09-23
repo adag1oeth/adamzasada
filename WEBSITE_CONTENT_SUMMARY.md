@@ -31,7 +31,7 @@
 Featured:
 
 - **Dropbox** — Senior Product Manager, Payments
-- **0xKYC** — CEO & Co-Founder; led a 10-person team
+- **0xKYC** — CEO & Co-Founder; led a 10-person team; card links to the open-source GitHub organization
 - **Hinkal** — Ecosystem & Product Lead
 
 Additional:
