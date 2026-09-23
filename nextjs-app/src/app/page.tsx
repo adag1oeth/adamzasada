@@ -312,7 +312,7 @@ export default function Home() {
         <section id="contact" className="contact section-shell" aria-labelledby="contact-title">
           <div>
             <p className="eyebrow">Contact</p>
-            <h2 id="contact-title">Ready to build something that matters?</h2>
+            <h2 id="contact-title">Let&apos;s compare notes.</h2>
           </div>
           <div className="contact__actions">
             <a className="button button--dark" href="mailto:contact@adamzasada.com">

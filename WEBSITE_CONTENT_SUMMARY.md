@@ -58,6 +58,7 @@ The Elympics metric is aligned with the latest CV: daily gameplay increased from
 
 ### Contact
 
+- Headline: **Let's compare notes.**
 - Email: `contact@adamzasada.com`
 - X: `https://x.com/adamrulesmusic`
 - LinkedIn: `https://linkedin.com/in/adag1oeth`
