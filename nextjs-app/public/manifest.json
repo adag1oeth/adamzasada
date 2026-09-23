@@ -1,11 +1,11 @@
 {
-  "name": "Adam Zasada - Product Leader & Banking Infrastructure Architect",
+  "name": "Adam Zasada - Product Leader, Founder & Adam Rules",
   "short_name": "Adam Zasada",
-  "description": "Builder of €450M banking platforms and zero-knowledge protocols. Product leader with 8+ years experience.",
+  "description": "Product leader and founder across payments, fintech, Web3, and AI. DJ and producer behind Adam Rules.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f8fafc",
-  "theme_color": "#1e293b",
+  "background_color": "#f4f1ea",
+  "theme_color": "#111318",
   "orientation": "portrait-primary",
   "icons": [
     {
@@ -14,7 +14,7 @@
       "type": "image/x-icon"
     }
   ],
-  "categories": ["business", "productivity", "professional"],
+  "categories": ["business", "productivity", "music"],
   "lang": "en-US",
   "dir": "ltr"
 }

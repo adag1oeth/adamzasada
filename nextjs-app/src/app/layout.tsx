@@ -17,10 +17,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://adamzasada.com'),
   title: {
-    default: "Adam Zasada | Senior Product Manager, Payments at Dropbox | Product Leader",
+    default: "Adam Zasada | Product Leader, Founder & Adam Rules",
     template: "%s | Adam Zasada"
   },
-  description: "Product leader across payments, fintech, Web3, and AI. Senior Product Manager, Payments at Dropbox. Delivered core infrastructure for a €450M platform and drove $50M in monthly transaction volume.",
+  description: "Adam Zasada is a product leader and founder working across payments, fintech, Web3, and AI, and the DJ and producer behind Adam Rules.",
   keywords: [
     "Product Leadership",
     "Banking Infrastructure", 
@@ -36,7 +36,9 @@ export const metadata: Metadata = {
     "Warsaw Tech Leader",
     "Poland Fintech",
     "SEPA Payments",
-    "Core Banking Integration"
+    "Core Banking Integration",
+    "Adam Rules",
+    "Indie Dance DJ"
   ].join(", "),
   authors: [{ 
     name: "Adam Zasada",
@@ -53,46 +55,29 @@ export const metadata: Metadata = {
   classification: "Business",
   openGraph: {
     type: "profile",
-    title: "Adam Zasada | Senior Product Manager, Payments at Dropbox | Product Leader",
-    description: "Product leader across payments, fintech, Web3, and AI. Senior Product Manager, Payments at Dropbox. Delivered core infrastructure for a €450M platform and drove $50M in monthly transaction volume.",
+    title: "Adam Zasada | Product Leader, Founder & Adam Rules",
+    description: "Product leader across payments, fintech, Web3, and AI. DJ and producer behind Adam Rules.",
     url: "https://adamzasada.com",
     siteName: "Adam Zasada Portfolio",
     locale: "en_US",
-    images: [
-      {
-        url: "/adag1o.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Adam Zasada - Product Leader and Banking Infrastructure Architect",
-        type: "image/jpeg",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    site: "@adag1oeth",
-    creator: "@adag1oeth",
-    title: "Adam Zasada | Senior Product Manager, Payments at Dropbox | Product Leader",
-    description: "Product leader across payments, fintech, Web3, and AI. Senior Product Manager, Payments at Dropbox. Delivered core infrastructure for a €450M platform and drove $50M in monthly transaction volume.",
-    images: {
-      url: "/adag1o.jpg",
-      alt: "Adam Zasada - Product Leader and Banking Infrastructure Architect",
-    },
+    site: "@adamrulesmusic",
+    creator: "@adamrulesmusic",
+    title: "Adam Zasada | Product Leader, Founder & Adam Rules",
+    description: "Product leader across payments, fintech, Web3, and AI. DJ and producer behind Adam Rules.",
   },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
     ],
     shortcut: "/favicon.ico",
-    apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-    ],
   },
   manifest: "/manifest.json",
   robots: {
     index: true,
     follow: true,
-    nocache: true,
     googleBot: {
       index: true,
       follow: true,
@@ -102,14 +87,10 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: "verification_token_here", // Add when you have Google Search Console
-  },
   alternates: {
     canonical: "https://adamzasada.com",
     languages: {
       'en-US': 'https://adamzasada.com',
-      'pl-PL': 'https://adamzasada.com/pl', // Future Polish version
     },
   },
 };
@@ -122,25 +103,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        {/* Preconnect to external domains */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        
         {/* DNS prefetch for external resources */}
         <link rel="dns-prefetch" href="//open.spotify.com" />
-        <link rel="dns-prefetch" href="//twitter.com" />
-        <link rel="dns-prefetch" href="//telegram.org" />
+        <link rel="dns-prefetch" href="//x.com" />
         
         {/* Viewport and theme */}
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-        <meta name="theme-color" content="#1e293b" media="(prefers-color-scheme: dark)" />
-        <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
-        
-        {/* Security headers */}
-        <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
-        <meta httpEquiv="X-Frame-Options" content="DENY" />
-        <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
+        <meta name="theme-color" content="#18100f" media="(prefers-color-scheme: dark)" />
+        <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)" />
         
         {/* Structured data for SEO */}
         <script
@@ -151,14 +121,18 @@ export default function RootLayout({
               "@type": "Person",
               "name": "Adam Zasada",
               "jobTitle": "Senior Product Manager, Payments at Dropbox",
-              "description": "Product leader across payments, fintech, Web3, and AI. Senior Product Manager, Payments at Dropbox. Delivered core infrastructure for a €450M platform and drove $50M in monthly transaction volume.",
+              "description": "Product leader and founder across payments, fintech, Web3, and AI. DJ and producer behind Adam Rules.",
               "url": "https://adamzasada.com",
-              "image": "https://adamzasada.com/adag1o.jpg",
+              "image": "https://adamzasada.com/adam-zasada-portrait.webp",
+              "alternateName": "Adam Rules",
               "sameAs": [
-                "https://twitter.com/adag1oeth",
+                "https://x.com/adamrulesmusic",
                 "https://linkedin.com/in/adag1oeth",
                 "https://github.com/adag1oeth",
-                "https://open.spotify.com/artist/5vkTq36ZbhBhO2BAhnH01E"
+                "https://open.spotify.com/artist/5vkTq36ZbhBhO2BAhnH01E",
+                "https://open.spotify.com/artist/16sef2w5Jz2vu6twQNtrLz",
+                "https://soundcloud.com/adamrulesmusic",
+                "https://instagram.com/adamrulesmusic"
               ],
               "address": {
                 "@type": "PostalAddress",
@@ -187,47 +161,22 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body 
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-br from-yellow-100 via-white to-orange-100 selection:bg-slate-200 selection:text-slate-900`}
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
-        <main id="main-content" role="main">
-          {children}
-        </main>
-        
-        {/* Google Analytics - Always loads for detection */}
-        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-          <>
-            <script 
-              async 
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
-            />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}');
-                `
-              }}
-            />
-          </>
-        )}
-        
-        {/* Vercel Analytics & Speed Insights */}
-        <ConditionalAnalytics />
-        
-        {/* Cookie Consent Banner for EU Users */}
-        <SimpleCookieBanner />
-        
         {/* Skip to content link for accessibility */}
         <a 
           href="#main-content" 
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-md focus:shadow-lg"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[10000] focus:px-4 focus:py-2 focus:bg-black focus:text-white focus:rounded-full focus:shadow-lg"
         >
           Skip to main content
         </a>
+
+        {children}
+
+        <ConditionalAnalytics />
+        <SimpleCookieBanner />
       </body>
     </html>
   );

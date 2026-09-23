@@ -1,12 +1,13 @@
 # Adam Zasada - Portfolio Website
 
-A modern, high-performance portfolio website built with Next.js 15, TypeScript, and Tailwind CSS.
+A modern, high-performance personal site built with Next.js 16, TypeScript, and Tailwind CSS.
 
 ## 🚀 Features
 
 - **Modern Design**: Clean, accessible interface with professional styling
-- **Performance Optimized**: Next.js 15 with App Router, optimized images, and compression
-- **Analytics Ready**: Google Analytics 4 integration with custom event tracking
+- **Performance Optimized**: Next.js 16 with App Router, optimized images, and compression
+- **Consent-Aware Analytics**: Google Analytics 4 and Vercel Analytics load after consent
+- **Dual Identity**: Product leadership portfolio and a dedicated Adam Rules music section
 - **Responsive**: Mobile-first design that works on all devices
 - **SEO Optimized**: Complete meta tags, Open Graph, and Twitter Cards
 - **Type Safe**: Full TypeScript implementation
@@ -14,10 +15,10 @@ A modern, high-performance portfolio website built with Next.js 15, TypeScript, 
 
 ## 🛠️ Tech Stack
 
-- **Framework**: Next.js 15 (App Router)
+- **Framework**: Next.js 16 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
-- **Analytics**: Google Analytics 4 via @next/third-parties
+- **Analytics**: Consent-gated Google Analytics 4, Vercel Analytics, and Speed Insights
 - **Deployment**: Vercel (recommended)
 
 ## 📁 Project Structure
@@ -112,7 +113,7 @@ Target metrics:
 ## 🤝 Contact
 
 - **Telegram**: [@adag1oeth](https://t.me/adag1oeth)
-- **X (Twitter)**: [@adag1oeth](https://x.com/adag1oeth)
+- **X (Twitter)**: [@adamrulesmusic](https://x.com/adamrulesmusic)
 - **LinkedIn**: [adag1oeth](https://linkedin.com/in/adag1oeth)
 - **GitHub**: [adag1oeth](https://github.com/adag1oeth)
 - **Medium**: [adamzasada](https://adamzasada.medium.com/)

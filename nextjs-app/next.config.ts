@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  agentRules: false,
+
   // Performance optimizations
   compress: true,
   poweredByHeader: false,

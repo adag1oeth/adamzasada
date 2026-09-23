@@ -27,7 +27,7 @@ export interface GAButtonClickEvent {
 }
 
 export interface GAContactEvent {
-  contact_method: 'telegram' | 'twitter' | 'linkedin' | 'github' | 'medium' | 'soundcloud' | 'farcaster';
+  contact_method: 'telegram' | 'twitter' | 'linkedin' | 'github' | 'medium' | 'soundcloud' | 'spotify' | 'instagram' | 'farcaster';
   contact_location?: string;
 }
 
