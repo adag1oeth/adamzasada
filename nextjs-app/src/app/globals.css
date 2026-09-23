@@ -801,11 +801,16 @@ a {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .experience-grid--standard .experience-card {
+  .experience-grid--standard .experience-card,
+  .experience-grid--standard .experience-card:nth-last-child(-n + 2) {
     grid-column: auto;
   }
 
   .experience-grid--standard .experience-card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .experience-grid--featured .experience-card:last-child {
     grid-column: 1 / -1;
   }
 
@@ -890,8 +895,10 @@ a {
     grid-template-columns: 1fr;
   }
 
+  .experience-grid--standard .experience-card,
+  .experience-grid--standard .experience-card:nth-last-child(-n + 2),
   .experience-grid--standard .experience-card:last-child {
-    grid-column: auto;
+    grid-column: 1 / -1;
   }
 
   .experience-card,
