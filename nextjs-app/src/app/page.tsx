@@ -165,8 +165,10 @@ export default function Home() {
           <p className="eyebrow">Product leader & founder</p>
           <h1>Adam<br />Zasada</h1>
           <div className="hero__role">
-            <span>Senior Product Manager, Payments at Dropbox</span>
-            <a className="hero__role-music" href="#music">DJ &amp; producer · Adam Rules</a>
+            <p>Senior Product Manager, Payments at Dropbox</p>
+            <p className="hero__role-music">
+              <a href="#music">and DJ as Adam Rules</a>
+            </p>
           </div>
           <p className="hero__intro">
             Nearly a decade shipping payments, fintech, and AI products across startups and global platforms.

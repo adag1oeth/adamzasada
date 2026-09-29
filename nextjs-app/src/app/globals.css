@@ -152,7 +152,12 @@ a {
   line-height: 1.25;
 }
 
+.hero__role p {
+  margin: 0;
+}
+
 .hero__role-music {
+  display: block;
   color: var(--accent);
   font-size: 0.82em;
   transition: opacity 180ms ease;
@@ -198,7 +203,7 @@ a {
 
 .button:focus-visible,
 .text-link:focus-visible,
-.hero__role-music:focus-visible,
+.hero__role-music a:focus-visible,
 .site-nav a:focus-visible,
 .footer a:focus-visible,
 .experience-card:focus-visible {
