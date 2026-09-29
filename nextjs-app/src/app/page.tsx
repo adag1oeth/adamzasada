@@ -164,13 +164,16 @@ export default function Home() {
         <div className="hero__copy">
           <p className="eyebrow">Product leader & founder</p>
           <h1>Adam<br />Zasada</h1>
-          <p className="hero__role">Senior Product Manager, Payments at Dropbox</p>
+          <div className="hero__role">
+            <span>Senior Product Manager, Payments at Dropbox</span>
+            <a className="hero__role-music" href="#music">DJ &amp; producer · Adam Rules</a>
+          </div>
           <p className="hero__intro">
             Nearly a decade shipping payments, fintech, and AI products across startups and global platforms.
           </p>
           <div className="hero__links">
             <a className="button button--dark" href="#experience">View experience</a>
-            <a className="button button--quiet" href="#music">Meet Adam Rules</a>
+            <a className="button button--quiet" href="#music">Explore music</a>
           </div>
         </div>
 

@@ -140,12 +140,26 @@ a {
 }
 
 .hero__role {
+  display: flex;
   max-width: 30ch;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
   margin: 2.3rem 0 0;
   font-size: clamp(1.2rem, 2.1vw, 1.6rem);
   font-weight: 650;
   letter-spacing: -0.025em;
   line-height: 1.25;
+}
+
+.hero__role-music {
+  color: var(--accent);
+  font-size: 0.82em;
+  transition: opacity 180ms ease;
+}
+
+.hero__role-music:hover {
+  opacity: 0.72;
 }
 
 .hero__intro {
@@ -184,6 +198,7 @@ a {
 
 .button:focus-visible,
 .text-link:focus-visible,
+.hero__role-music:focus-visible,
 .site-nav a:focus-visible,
 .footer a:focus-visible,
 .experience-card:focus-visible {
