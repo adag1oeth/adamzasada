@@ -260,7 +260,7 @@ export default function Home() {
               <h2 id="music-title">Adam Rules</h2>
               <p className="music-section__genre">Indie dance & house · Warsaw</p>
               <p className="music-section__lead">
-                His sets connect indie dance and house through warm melodies, a distinct groove and gradually building energy.
+                His sets move between melodic warmth and dance-floor energy, guided by a distinct groove and patiently unfolding narratives.
               </p>
 
               <div className="music-section__now">
