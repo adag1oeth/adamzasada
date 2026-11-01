@@ -81,6 +81,8 @@ Run `npm run test:analytics` to verify consent and event behavior.
 
 See `docs/ANALYTICS.md` for detailed implementation guide.
 
+Manual GA4 account setup is deferred. The remaining checklist is in the [root README](../README.md#analytics-follow-up--deferred).
+
 ## 🌐 Deployment
 
 ### Vercel (Recommended)
