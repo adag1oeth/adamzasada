@@ -127,7 +127,7 @@ export default function RootLayout({
               "alternateName": "Adam Rules",
               "sameAs": [
                 "https://x.com/adamrulesmusic",
-                "https://linkedin.com/in/adag1oeth",
+                "https://linkedin.com/in/adamrulesmusic/",
                 "https://github.com/adag1oeth",
                 "https://open.spotify.com/artist/5vkTq36ZbhBhO2BAhnH01E",
                 "https://open.spotify.com/artist/16sef2w5Jz2vu6twQNtrLz",

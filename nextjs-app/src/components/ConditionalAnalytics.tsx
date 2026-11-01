@@ -4,19 +4,21 @@ import { useEffect, useState } from 'react';
 import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { canCollectAnalytics, initializeAnalytics } from '@/lib/analytics';
+import { getMeasurementId } from '@/lib/analytics-environment';
+import { subscribeToAnalyticsConsent } from '@/lib/analytics-consent';
 
 export default function ConditionalAnalytics() {
   const [hasConsent, setHasConsent] = useState(false);
-  const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+  const measurementId = getMeasurementId();
 
   useEffect(() => {
     const syncConsent = () => {
-      setHasConsent(localStorage.getItem('cookieConsent') === 'true');
+      initializeAnalytics();
+      setHasConsent(canCollectAnalytics());
     };
-
     syncConsent();
-    window.addEventListener('consentUpdated', syncConsent);
-    return () => window.removeEventListener('consentUpdated', syncConsent);
+    return subscribeToAnalyticsConsent(syncConsent);
   }, []);
 
   if (!hasConsent) return null;
@@ -24,23 +26,13 @@ export default function ConditionalAnalytics() {
   return (
     <>
       {measurementId && (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
-            strategy="afterInteractive"
-          />
-          <Script id="google-analytics" strategy="afterInteractive">
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${measurementId}', { anonymize_ip: true });
-            `}
-          </Script>
-        </>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
+          strategy="afterInteractive"
+        />
       )}
-      <Analytics />
-      <SpeedInsights />
+      <Analytics beforeSend={(event) => canCollectAnalytics() ? event : null} />
+      <SpeedInsights beforeSend={(event) => canCollectAnalytics() ? event : null} />
     </>
   );
 }

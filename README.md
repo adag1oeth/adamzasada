@@ -19,7 +19,7 @@ This is my personal website and digital business card. Here you’ll find:
 
 - Telegram: [@adag1oeth](https://t.me/adag1oeth)
 - X (Twitter): [@adag1oeth](https://x.com/adag1oeth)
-- LinkedIn: [adag1oeth](https://linkedin.com/in/adag1oeth)
+- LinkedIn: [adamrulesmusic](https://linkedin.com/in/adamrulesmusic/)
 
 ---
 

@@ -699,7 +699,30 @@ a {
 
 .footer div {
   display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 1.4rem;
+}
+
+.footer__preferences {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.footer__preferences:hover {
+  color: var(--accent);
+}
+
+.footer__preferences:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
 
 .footer__top {
@@ -747,7 +770,7 @@ a {
 }
 
 .cookie-banner__copy span {
-  color: rgba(255, 255, 255, 0.62);
+  color: rgba(255, 255, 255, 0.78);
   font-size: 0.72rem;
   line-height: 1.4;
 }
@@ -759,7 +782,7 @@ a {
 }
 
 .cookie-button {
-  min-height: 38px;
+  min-height: 44px;
   padding: 0.55rem 0.8rem;
   border: 1px solid transparent;
   border-radius: 999px;

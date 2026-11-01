@@ -69,12 +69,15 @@ public/
 
 ## 📊 Analytics
 
-The site includes comprehensive Google Analytics 4 tracking:
+Analytics runs only on the production domain after explicit consent:
 
 - Page views (automatic)
-- Contact button clicks
-- Social media engagement
-- Custom events for user interactions
+- Email, LinkedIn, and X contact clicks
+- Music, experience-card, GitHub, and Instagram outbound clicks
+- Reopenable analytics preferences and consent withdrawal
+
+Localhost and preview deployments do not load analytics, even with a configured measurement ID.
+Run `npm run test:analytics` to verify consent and event behavior.
 
 See `docs/ANALYTICS.md` for detailed implementation guide.
 
@@ -114,7 +117,7 @@ Target metrics:
 
 - **Telegram**: [@adag1oeth](https://t.me/adag1oeth)
 - **X (Twitter)**: [@adamrulesmusic](https://x.com/adamrulesmusic)
-- **LinkedIn**: [adag1oeth](https://linkedin.com/in/adag1oeth)
+- **LinkedIn**: [adamrulesmusic](https://linkedin.com/in/adamrulesmusic/)
 - **GitHub**: [adag1oeth](https://github.com/adag1oeth)
 - **Medium**: [adamzasada](https://adamzasada.medium.com/)
 

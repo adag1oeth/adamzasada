@@ -1,48 +1,30 @@
-// Google Analytics 4 Types
-export interface GAEvent {
-  action: string;
-  category?: string;
-  label?: string;
-  value?: number;
+export interface GAContactEvent {
+  contact_method: 'email' | 'twitter' | 'linkedin';
+  contact_location: 'cta_section' | 'footer';
 }
 
-export interface GAPageView {
-  page_title?: string;
-  page_location?: string;
-  page_path?: string;
-}
-
-export interface GACustomEvent {
-  event_name: string;
-  parameters?: {
-    [key: string]: string | number | boolean;
+export interface AnalyticsEvents {
+  contact_click: GAContactEvent;
+  outbound_click: {
+    outbound_url: string;
+    link_text: string;
+    link_location: 'music' | 'experience' | 'footer';
+    company?: string;
   };
 }
 
-// Common custom events
-export interface GAButtonClickEvent {
-  button_name: string;
-  button_location?: string;
-  page_section?: string;
-}
+type Gtag = {
+  (command: 'js', date: Date): void;
+  (command: 'config', id: string, parameters: Record<string, unknown>): void;
+  (command: 'event', name: keyof AnalyticsEvents, parameters: Record<string, unknown>): void;
+  (command: 'consent', action: 'default' | 'update', parameters: Record<string, string>): void;
+};
 
-export interface GAContactEvent {
-  contact_method: 'telegram' | 'twitter' | 'linkedin' | 'github' | 'medium' | 'soundcloud' | 'spotify' | 'instagram' | 'farcaster';
-  contact_location?: string;
-}
-
-export interface GAPageEngagementEvent {
-  engagement_time_msec?: number;
-  page_title?: string;
-}
-
-// GA4 Global Interface
 declare global {
   interface Window {
-    gtag?: (
-      command: 'config' | 'event' | 'consent',
-      targetId: string,
-      config?: Record<string, unknown>
-    ) => void;
+    gtag?: Gtag;
+    dataLayer?: IArguments[];
+    siteAnalyticsInitialized?: boolean;
+    [key: `ga-disable-${string}`]: boolean | undefined;
   }
 }

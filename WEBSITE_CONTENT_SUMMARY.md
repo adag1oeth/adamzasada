@@ -61,7 +61,7 @@ The Elympics metric is aligned with the latest CV: daily gameplay increased from
 - Headline: **Let's compare notes.**
 - Email: `contact@adamzasada.com`
 - X: `https://x.com/adamrulesmusic`
-- LinkedIn: `https://linkedin.com/in/adag1oeth`
+- LinkedIn: `https://linkedin.com/in/adamrulesmusic/`
 - GitHub: `https://github.com/adag1oeth`
 - Instagram: `https://instagram.com/adamrulesmusic`
 - Footer includes a compact **Back to top** link
@@ -78,9 +78,10 @@ The Elympics metric is aligned with the latest CV: daily gameplay increased from
 
 ## Analytics and Consent
 
-- Google Analytics, Vercel Analytics, and Speed Insights load only after explicit acceptance
+- Google Analytics, Vercel Analytics, and Speed Insights load only after explicit acceptance on the production domain
 - Declining stores the preference and keeps analytics unloaded
-- Contact event helpers safely no-op before GA is available
+- Footer preferences allow changing or withdrawing consent; withdrawal disables tracking and reloads the page when storage is available
+- Contact and outbound event helpers check consent and environment on every call
 
 ## Technical Stack
 

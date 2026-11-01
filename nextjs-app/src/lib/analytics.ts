@@ -1,124 +1,67 @@
-import { 
-  GAEvent, 
-  GAPageView, 
-  GACustomEvent, 
-  GAButtonClickEvent, 
-  GAContactEvent 
-} from '@/types/analytics';
+import type { AnalyticsEvents, GAContactEvent } from '@/types/analytics';
+import { readAnalyticsConsent } from './analytics-consent';
+import { getMeasurementId, isAnalyticsEnvironment } from './analytics-environment';
 
-// Check if GA is loaded
-export const isGAEnabled = (): boolean => {
-  return (
-    typeof window !== 'undefined' &&
-    !!window.gtag &&
-    typeof window.gtag === 'function' &&
-    !!process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
-  );
-};
+export function canCollectAnalytics(): boolean {
+  return isAnalyticsEnvironment() && readAnalyticsConsent() === true;
+}
 
-// Basic event tracking
-export const trackEvent = (event: GAEvent): void => {
-  if (!isGAEnabled() || !window.gtag) return;
+export function initializeAnalytics(): void {
+  const measurementId = getMeasurementId();
+  if (!canCollectAnalytics() || !measurementId || window.siteAnalyticsInitialized) return;
 
-  window.gtag('event', event.action, {
-    event_category: event.category,
-    event_label: event.label,
-    value: event.value,
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () {
+    // Google expects the arguments object for each queued command.
+    // eslint-disable-next-line prefer-rest-params
+    window.dataLayer?.push(arguments);
+  };
+  window[`ga-disable-${measurementId}`] = false;
+  window.siteAnalyticsInitialized = true;
+  window.gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
   });
-};
-
-// Custom event tracking with parameters
-export const trackCustomEvent = (event: GACustomEvent): void => {
-  if (!isGAEnabled() || !window.gtag) return;
-
-  window.gtag('event', event.event_name, event.parameters || {});
-};
-
-// Page view tracking (automatically handled by Next.js, but useful for SPAs)
-export const trackPageView = (pageView: GAPageView): void => {
-  if (!isGAEnabled() || !window.gtag) return;
-
-  window.gtag('config', process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!, {
-    page_title: pageView.page_title,
-    page_location: pageView.page_location,
-    page_path: pageView.page_path,
+  window.gtag('consent', 'update', { analytics_storage: 'granted' });
+  window.gtag('js', new Date());
+  // A single config sends the initial page_view. Anchor navigation is not a new page.
+  window.gtag('config', measurementId, {
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false,
   });
-};
+}
 
-// Specific event tracking functions for common actions
+function sendEvent<Name extends keyof AnalyticsEvents>(name: Name, parameters: AnalyticsEvents[Name]): void {
+  const measurementId = getMeasurementId();
+  if (!canCollectAnalytics() || !measurementId) return;
+  initializeAnalytics();
+  window.gtag?.('event', name, { ...parameters, send_to: measurementId });
+}
 
-// Track button clicks
-export const trackButtonClick = (event: GAButtonClickEvent): void => {
-  trackCustomEvent({
-    event_name: 'button_click',
-    parameters: {
-      button_name: event.button_name,
-      button_location: event.button_location || 'unknown',
-      page_section: event.page_section || 'main',
-    },
+export function trackContactClick(event: GAContactEvent): void {
+  sendEvent('contact_click', event);
+}
+
+export function trackOutboundClick(
+  url: string,
+  linkText: string,
+  location: AnalyticsEvents['outbound_click']['link_location'] = 'music',
+  company?: string,
+): void {
+  // Send only public destinations, without query strings or fragments.
+  let destination: URL;
+  try {
+    destination = new URL(url);
+  } catch {
+    return;
+  }
+  if (!['https:', 'http:'].includes(destination.protocol)) return;
+  sendEvent('outbound_click', {
+    outbound_url: `${destination.origin}${destination.pathname}`,
+    link_text: linkText,
+    link_location: location,
+    ...(company ? { company } : {}),
   });
-};
-
-// Track contact method clicks
-export const trackContactClick = (event: GAContactEvent): void => {
-  trackCustomEvent({
-    event_name: 'contact_click',
-    parameters: {
-      contact_method: event.contact_method,
-      contact_location: event.contact_location || 'footer',
-    },
-  });
-};
-
-// Track scroll depth
-export const trackScrollDepth = (depth: number): void => {
-  trackCustomEvent({
-    event_name: 'scroll_depth',
-    parameters: {
-      scroll_depth: Math.round(depth),
-    },
-  });
-};
-
-// Track file downloads
-export const trackFileDownload = (fileName: string, fileType: string): void => {
-  trackCustomEvent({
-    event_name: 'file_download',
-    parameters: {
-      file_name: fileName,
-      file_type: fileType,
-    },
-  });
-};
-
-// Track outbound link clicks
-export const trackOutboundClick = (url: string, linkText?: string): void => {
-  trackCustomEvent({
-    event_name: 'outbound_click',
-    parameters: {
-      outbound_url: url,
-      link_text: linkText || 'unknown',
-    },
-  });
-};
-
-// Track form submissions
-export const trackFormSubmission = (formName: string, success: boolean): void => {
-  trackCustomEvent({
-    event_name: 'form_submission',
-    parameters: {
-      form_name: formName,
-      success: success,
-    },
-  });
-};
-
-// Track engagement time
-export const trackEngagementTime = (timeInSeconds: number): void => {
-  trackCustomEvent({
-    event_name: 'user_engagement',
-    parameters: {
-      engagement_time_msec: timeInSeconds * 1000,
-    },
-  });
-};
+}

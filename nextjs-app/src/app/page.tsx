@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { trackContactClick, trackOutboundClick } from '@/lib/analytics';
+import { openAnalyticsPreferences } from '@/lib/analytics-consent';
 
 type Experience = {
   company: string;
@@ -125,7 +126,13 @@ function ExperienceCard({ experience }: { experience: Experience }) {
   }
 
   return (
-    <a className={className} href={experience.href} target="_blank" rel="noreferrer">
+    <a
+      className={className}
+      href={experience.href}
+      target="_blank"
+      rel="noreferrer"
+      onClick={() => trackOutboundClick(experience.href!, experience.company, 'experience', experience.company)}
+    >
       {content}
     </a>
   );
@@ -321,7 +328,11 @@ export default function Home() {
             <h2 id="contact-title">Let&apos;s compare notes.</h2>
           </div>
           <div className="contact__actions">
-            <a className="button button--dark" href="mailto:contact@adamzasada.com">
+            <a
+              className="button button--dark"
+              href="mailto:contact@adamzasada.com"
+              onClick={() => trackContactClick({ contact_method: 'email', contact_location: 'cta_section' })}
+            >
               Email Adam
             </a>
             <a
@@ -340,10 +351,11 @@ export default function Home() {
       <footer className="footer section-shell">
         <p>© 2026 Adam Zasada. Product Leader & Founder.</p>
         <div>
-          <a href="https://linkedin.com/in/adag1oeth" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a href="https://github.com/adag1oeth" target="_blank" rel="noreferrer">GitHub</a>
-          <a href="https://instagram.com/adamrulesmusic" target="_blank" rel="noreferrer">Instagram</a>
-          <a href="https://x.com/adamrulesmusic" target="_blank" rel="noreferrer">X</a>
+          <a href="https://linkedin.com/in/adamrulesmusic/" target="_blank" rel="noreferrer" onClick={() => trackContactClick({ contact_method: 'linkedin', contact_location: 'footer' })}>LinkedIn</a>
+          <a href="https://github.com/adag1oeth" target="_blank" rel="noreferrer" onClick={() => trackOutboundClick('https://github.com/adag1oeth', 'GitHub', 'footer')}>GitHub</a>
+          <a href="https://instagram.com/adamrulesmusic" target="_blank" rel="noreferrer" onClick={() => trackOutboundClick('https://instagram.com/adamrulesmusic', 'Instagram', 'footer')}>Instagram</a>
+          <a href="https://x.com/adamrulesmusic" target="_blank" rel="noreferrer" onClick={() => trackContactClick({ contact_method: 'twitter', contact_location: 'footer' })}>X</a>
+          <button type="button" className="footer__preferences" onClick={openAnalyticsPreferences}>Analytics preferences</button>
           <a className="footer__top" href="#top">Back to top ↑</a>
         </div>
       </footer>
